@@ -2,12 +2,12 @@
 
 Individual Features (Due by 15th May) 
 
-01 - Pinak
-02 - Jared
-03 - Andy
-04 - Sean
-07 - Tim
-08 - Benz
+- 01 - Pinak
+- 02 - Jared
+- 03 - Andy
+- 04 - Sean
+- 07 - Tim
+- 08 - Benz
 
 Each feature has a View, Controller (Servlet), Model. 
 
