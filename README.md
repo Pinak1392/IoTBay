@@ -1,6 +1,6 @@
 # IoTBay
 
-<!-- Individual Features (Due by 15th May) 
+Individual Features (Due by 15th May) 
 
 01 - Pinak
 02 - Jared
@@ -24,4 +24,4 @@ Finished:
 - DBConnector
 - DB abstract class
 
--------------------- -->
+--------------------
