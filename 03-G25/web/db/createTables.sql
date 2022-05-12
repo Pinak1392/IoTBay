@@ -18,7 +18,7 @@ CREATE TABLE Users (
     Date_Of_Birth DATE NOT NULL,
     isCustomer BOOLEAN NOT NULL,
     Active BOOLEAN NOT NULL,
-    PRIMARY KEY(UserID)
+    CONSTRAINT PK_Users PRIMARY KEY(UserID)
 );
 
 
@@ -33,8 +33,8 @@ CREATE TABLE Users (
 CREATE TABLE ULogs (
     UserID INTEGER NOT NULL,
     Time_Of_Action VARCHAR(40) NOT NULL,
-    Action VARCHAR(40) NOT NULL,
-    PRIMARY KEY (UserID)
+    "Action" VARCHAR(40) NOT NULL,
+    CONSTRAINT PK_ULogs PRIMARY KEY (UserID)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -51,8 +51,8 @@ CREATE TABLE Customer (
     "STATE" VARCHAR(40),
     Suburb VARCHAR(40),
     Country VARCHAR(40),
-    PRIMARY KEY(CustomerID),
-    FOREIGN KEY(CustomerID) REFERENCES Users(UserID)
+    CONSTRAINT PK_Customer PRIMARY KEY(CustomerID),
+    CONSTRAINT FK_Customer FOREIGN KEY(CustomerID) REFERENCES Users(UserID)
 );
 
 
@@ -67,8 +67,8 @@ CREATE TABLE Staff (
     Staff_Salary INTEGER,
     Staff_EmploymentDate DATE,
     Permissions VARCHAR(5),
-    PRIMARY KEY(StaffID),
-    FOREIGN KEY(StaffID) REFERENCES Users(UserID)
+    CONSTRAINT PK_Staff PRIMARY KEY(StaffID),
+    CONSTRAINT FK_Staff FOREIGN KEY(StaffID) REFERENCES Users(UserID)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -81,8 +81,8 @@ CREATE TABLE Card (
     CardName VARCHAR(40) NOT NULL,
     CardExpiry VARCHAR(40) NOT NULL,
     CardPin INTEGER NOT NULL,
-    PRIMARY KEY(CardNo),
-    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
+    CONSTRAINT PK_Card PRIMARY KEY(CardNo),
+    CONSTRAINT FK_Card FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -94,8 +94,8 @@ CREATE TABLE Payment (
     PaymentMeth VARCHAR(40) NOT NULL,
     Cost NUMERIC(10,2) NOT NULL,
     CardNo INTEGER,
-    PRIMARY KEY(PaymentID),
-    FOREIGN KEY(CardNo) REFERENCES Card(CardNo)
+    CONSTRAINT PK_Payment PRIMARY KEY(PaymentID),
+    CONSTRAINT FK_Payment FOREIGN KEY(CardNo) REFERENCES Card(CardNo)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -114,9 +114,9 @@ CREATE TABLE Orders (
     "State" VARCHAR(40),
     Suburb VARCHAR(40),
     Country VARCHAR(40),
-    PRIMARY KEY(OrderID),
-    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
-    FOREIGN KEY(PaymentID) REFERENCES Payment(PaymentID)
+    CONSTRAINT PK_Orders PRIMARY KEY(OrderID),
+    CONSTRAINT FK_Orders1 FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+    CONSTRAINT FK_Orders2 FOREIGN KEY(PaymentID) REFERENCES Payment(PaymentID)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -129,7 +129,7 @@ CREATE TABLE Product (
     Stock INTEGER NOT NULL,
     Price NUMERIC(10,2) NOT NULL,
     Description VARCHAR(40),
-    PRIMARY KEY (ProductID)
+    CONSTRAINT PK_Product PRIMARY KEY (ProductID)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -140,7 +140,7 @@ CREATE TABLE Order_Product (
     OrderID INTEGER NOT NULL,
     ProductID INTEGER NOT NULL,
     Quantity INTEGER NOT NULL,
-    PRIMARY KEY(OrderID, ProductID),
-    FOREIGN KEY(OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
+    CONSTRAINT PK_Order_Product PRIMARY KEY(OrderID, ProductID),
+    CONSTRAINT FK_Order_Product1 FOREIGN KEY(OrderID) REFERENCES Orders(OrderID),
+    CONSTRAINT FK_Order_Product2 FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
 );
