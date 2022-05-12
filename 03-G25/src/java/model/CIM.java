@@ -9,7 +9,7 @@ package model;
  *
  * @author timmy
  */
-public class CustomerInformationManagement {
+public class CIM {
     private String fName;
     private String lName;
     private String password;
@@ -83,7 +83,7 @@ public class CustomerInformationManagement {
         this.active = active;
     }
     
-    public CustomerInformationManagement(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer, boolean active){
+    public CIM(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer, boolean active){
         this.fName = fName;
         this.lName = lName;
         this.password = password;

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.CustomerInformationManagement;
+import model.CIM;
 
 /**
  *
@@ -22,15 +22,15 @@ import model.CustomerInformationManagement;
 * Complete the existing methods of this classes to perform CRUD operations with the db.
 */
 
-public class CustomerInformationManagementManager {
+public class CIMManager {
     private Statement st;
    
-public CustomerInformationManagementManager(Connection conn) throws SQLException {       
+public CIMManager(Connection conn) throws SQLException {       
    st = conn.createStatement();   
 }
 
 //Find user by email and password in the database   
-public CustomerInformationManagement findCustomerInformationManagement(String email) throws SQLException {       
+public CIM findCustomerInformationManagement(String email) throws SQLException {       
    String fetch = "select * from USERS where EMAIL = '" + email + "'";
    ResultSet rs = st.executeQuery(fetch);
    
@@ -44,7 +44,7 @@ public CustomerInformationManagement findCustomerInformationManagement(String em
            String customerDOB = rs.getString(7);
            String customerIsCustomer = rs.getString(8);
            String customerActive = rs.getString(9);
-           return new CustomerInformationManagement(customerFirstName, customerLastName, customerPassword, customerEmail,Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer), Boolean.parseBoolean(customerActive));
+           return new CIM(customerFirstName, customerLastName, customerPassword, customerEmail,Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer), Boolean.parseBoolean(customerActive));
        }
    }
    
@@ -73,10 +73,10 @@ public void deleteUser(String email) throws SQLException{
 
 }
 
-public ArrayList<CustomerInformationManagement> fectCustomerInformationManagement() throws SQLException{
+public ArrayList<CIM> fectCustomerInformationManagement() throws SQLException{
     String fetch = "SELECT * from USERS";
     ResultSet rs = st.executeQuery(fetch);
-    ArrayList<CustomerInformationManagement> temp = new ArrayList();
+    ArrayList<CIM> temp = new ArrayList();
     
     while(rs.next()){
         String customerFirstName = rs.getString(2);
@@ -87,7 +87,7 @@ public ArrayList<CustomerInformationManagement> fectCustomerInformationManagemen
         String customerDOB = rs.getString(7);
         String customerIsCustomer = rs.getString(8);
         String customerActive = rs.getString(9); 
-        temp.add(new CustomerInformationManagement(customerFirstName, customerLastName, customerPassword, customerEmail,Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer), Boolean.parseBoolean(customerActive)));
+        temp.add(new CIM(customerFirstName, customerLastName, customerPassword, customerEmail,Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer), Boolean.parseBoolean(customerActive)));
      }
     return temp;
 }
