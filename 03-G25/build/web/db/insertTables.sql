@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 /**
- * Author:  timmy
+ * Author:  benz
  * Created: 11/05/2022
  */
 
@@ -82,10 +82,54 @@ VALUES
 (37, 79, 'Maria', 2725, 'NSW', 'Vermicci', 'Australia'),
 (39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
 
--- /* Card TABLE */
--- INSERT INTO Card(CardNo, CustomerID, CardName, CardExpiry, CardPin)
--- VALUES 
--- (, 1, )
+/*Product Table (not sure if it works)*/
+INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED)
+VALUES
+(DEFAULT, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor', 0),
+(DEFAULT, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor', 0),
+(DEFAULT, 'VCNL4010 Proximity/Light sensor', 7, 14.74, 'sensor', 0),
+(DEFAULT, 'DFRobot SEN0312 Proximity Sensor', 10, 23.99, 'sensor', 0),
+(DEFAULT, 'TankMate R3 Tank Level Sensor', 12, 350.00, 'sensor', 0),
+(DEFAULT, 'Optomax Digital Liquid Level Sensor', 8, 43.99, 'sensor', 0),
+(DEFAULT, 'Autonics Inductive Proximity Sensor', 9, 40.00, 'sensor', 0),
+(DEFAULT, 'Spring Return Pneumatic Actuator', 5, 150.00, 'actuator', 0),
+(DEFAULT, 'VEVOR 20" Stroke Linear Actuator', 9, 52.99, 'actuator', 0),
+(DEFAULT, 'ACTUATOR - ELECTRIC 24DC X F05', 2, 1300.00, 'actuator', 0),
+(DEFAULT, 'Schmersal Magnetic Actuator, Plastic', 21, 31.99, 'actuator', 0),
+(DEFAULT, 'Hamlin 57135-000 Magnetic Actuator', 10, 17.50, 'actuator', 0),
+(DEFAULT, '230v Electric Thermal Actuator', 23, 10.33, 'actuator', 0),
+(DEFAULT, 'TG451 Industrial Cellular', 5, 399.00, 'gateway', 0),
+(DEFAULT, 'F-DPU100', 2, 699.00, 'gateway', 0),
+(DEFAULT, 'TG452', 9, 530.00, 'gateway', 0),
+(DEFAULT, 'TY511', 2, 499.00, 'gateway', 0),
+(DEFAULT, 'Advantech UTX-3117FS-S6A1N', 5, 1490.00, 'gateway', 0),
+(DEFAULT, 'Lantronix SGX 5150', 3, 688.50, 'gateway', 0),
+(DEFAULT, 'Ig902', 9, 1000.00, 'gateway', 0),
+(DEFAULT, 'GL-S10', 9, 36.35, 'gateway', 0);
+
+ /* Card TABLE */
+INSERT INTO Card(CardNo, CustomerID, CardName, CardExpiry, CardPin)
+VALUES 
+(4539878081538978, 1, 'Thomas Muller', '5/24', 297),
+(4532251611706175, 2, 'Bobby Lee', '4/23', 892),
+(6226984405246174, 3, 'Tom Jerry', '2/24', 246),
+(4532845698352769, 4, 'Xavier Chan', '12/22', 276),
+(5576643891292534, 6, 'Jack Narrow', '3/24', 231),
+(5496199986474369, 7, 'Osian Rocha', '8/24', 368),
+(4916104773752402, 11, 'Bernard Roberson', '7/24', 346),
+(4539814402266510, 12, 'Ioan Becker', '8/24', 685),
+(5101404895516111, 14, 'Ryan Gibson', '1/24', 272),
+(4024007109877307, 15, 'Scott Sterling', '1/23', 655),
+(6223059373857923, 16, 'Jerry Connor', '8/22', 967),
+(4556017496281605, 22, 'Michael Jacker', '9/23', 754),
+(4929369081986472, 24, 'Sean Siu', '1/23', 677),
+(5115865636349067, 25, 'Jean Bart', '2/24', 685),
+(5172977726468291, 26, 'Sui Sei', '8/24', 543),
+(5180180805689156, 28, 'Peter Driver', '9/23', 435),
+(4024007164947920, 33, 'Nanami Sato', '9/22', 124),
+(6223057859229450, 36, 'Persia Juliet', '10/24', 436),
+(5403525313938704, 37, 'Don Maki', '10/22', 346),
+(4929277877296362, 39, 'Pen Piper', '11/23', 866);
 
 /* Staff TABLE */
 INSERT INTO Staff(StaffID, Staff_Position, Staff_Salary, Staff_EmploymentDate, Permissions)
