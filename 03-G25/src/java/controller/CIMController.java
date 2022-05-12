@@ -6,40 +6,40 @@
 package controller;
 
 import dao.DBConnector;
-import dao.CustomerInformationManagementManager;
+import dao.CIMManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.CustomerInformationManagement;
+import model.CIM;
 
 /**
  *
  * @author timmy
  */
-public class CustomerInformationManagementController {
+public class CIMController {
 
 private static Scanner in = new Scanner(System.in);
 private DBConnector connector;
 private Connection conn;
-private CustomerInformationManagementManager db;
+private CIMManager db;
  
 
 public static void main(String[] args) throws SQLException {
-    (new CustomerInformationManagementController()).runQueries();
+    (new CIMController()).runQueries();
 }
 
-public CustomerInformationManagementController(){
+public CIMController(){
     try{
         connector = new DBConnector();
         conn = connector.openConnection();
-        db = new CustomerInformationManagementManager(conn);
+        db = new CIMManager(conn);
     }
     
     catch(ClassNotFoundException | SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
@@ -111,7 +111,7 @@ String active = in.nextLine();
         db.addCustomerInformationManagement(fname, lname, password, email, Integer.parseInt(phoneNo), dob, Boolean.parseBoolean(isCustomer), Boolean.parseBoolean(active));
     }
     catch(SQLException ex){
-       Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex); 
+       Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, ex); 
     }
     System.out.println("User is added to the database.");
 }
@@ -119,7 +119,7 @@ String active = in.nextLine();
 private void testRead() throws SQLException{
     System.out.print("User email: ");
     String email = in.nextLine();
-    CustomerInformationManagement customerInformationManagement = db.findCustomerInformationManagement(email);
+    CIM customerInformationManagement = db.findCustomerInformationManagement(email);
     if(customerInformationManagement != null){
         System.out.println("User " + customerInformationManagement.getfName() +" exists in the database.");
     }
@@ -169,7 +169,7 @@ String active = in.nextLine();
     }
     
     catch(SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
@@ -187,13 +187,13 @@ private void testDelete(){
     }
     
     catch (SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
 private void showAll(){
     try{
-        ArrayList<CustomerInformationManagement> customerInformationManagements = db.fectCustomerInformationManagement();
+        ArrayList<CIM> customerInformationManagements = db.fectCustomerInformationManagement();
         System.out.println("Customer Information Management: ");
         customerInformationManagements.stream().forEach((customerInformationManagement) -> {
             System.out.printf("%-20s %-30s %-20s %-10s %-20s %-30s %-20s %-10s \n", customerInformationManagement.getfName(), customerInformationManagement.getlName(), customerInformationManagement.getPassword(), customerInformationManagement.getEmail(), customerInformationManagement.getPhoneNo(), customerInformationManagement.getDob(), customerInformationManagement.isIsCustomer(), customerInformationManagement.isActive() );
@@ -201,7 +201,7 @@ private void showAll(){
         System.out.println();
     }
     catch(SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, ex);
 
     }
 }

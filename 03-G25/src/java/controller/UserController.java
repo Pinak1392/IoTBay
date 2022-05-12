@@ -18,7 +18,7 @@ import model.User;
  *
  * @author limay
  */
-public class UserManagementController {
+public class UserController {
     public static User activeUser;
     
     private static DBConnector connector;
@@ -36,7 +36,7 @@ public class UserManagementController {
             conn = null;
             db = null;
             
-            Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -46,7 +46,7 @@ public class UserManagementController {
             db.setUser(email, password);
         } catch(Exception e){
             if(e instanceof SQLException){
-                Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
                 return;
             }
             
@@ -59,7 +59,7 @@ public class UserManagementController {
             db.addUser(fName, lName, password, email, phoneNo, dob, isCustomer);
         }
         catch(SQLException e){
-            Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }

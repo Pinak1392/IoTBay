@@ -1,5 +1,5 @@
 
-package product.dao;
+package dao;
 
 /**
  *
