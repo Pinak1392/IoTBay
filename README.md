@@ -15,7 +15,11 @@ Each feature has a View, Controller (Servlet), Model.
 
 Group Features (Due by 15th May)
 
-DBManager implementation/code needed.  
+DBManager implementation/code needed. 
+
+Patch up SQL script and Database - Benz
+
+Admin Menu (Default built-in user for app) 
 
 --------------------
 
