@@ -19,14 +19,11 @@
             <%String phoneNo = request.getParameter("phoneNo");%>
             <%String DOB = request.getParameter("DOB");%>
             <%String tos = request.getParameter("tos");%>
-            <%if(tos != null){%>
-                <%
+            <%
                 UserManagementController.addUser(fname,lname,password,email,phoneNo,DOB,true);
-                UserManagementController.setUser(email, password);
-                %>
-            <%} else {%>
-                <jsp:forward page="Register.jsp" />
-            <%}%>
+                session.setAttribute("User",UserManagementController.setUser(email, password));
+            %>
+            <jsp:forward page="Register.jsp" />
         <%}else if(formType != null && formType.equals("login")) {%>
             <%email = request.getParameter("email");%>
             <%password = request.getParameter("password");%>

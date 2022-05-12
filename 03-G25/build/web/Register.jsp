@@ -10,7 +10,11 @@
         <a href="Login.jsp">Login</a>
         
         <div id="errorDiv">
-            
+            <%
+              ArrayList<String> errors = ErrorLogger.getErrs();
+              for(int i = 0; i < errors.size()){ %>
+              <p><%= errors.get(i) %></p>
+            <% } %>
         </div>
         
         <h1>Register</h1>

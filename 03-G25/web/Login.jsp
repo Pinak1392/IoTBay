@@ -14,6 +14,15 @@
                 Error: Invalid credentials
             <%}%>
         </p>
+        
+        <div id="errorDiv">
+            <%
+              ArrayList<String> errors = ErrorLogger.getErrs();
+              for(int i = 0; i < errors.size()){ %>
+              <p><%= errors.get(i) %></p>
+            <% } %>
+        </div>
+        
         <h1>Login</h1>
         <form method="POST" action="index.jsp">
             <label for="email">Email:</label>

@@ -34,7 +34,7 @@ CREATE TABLE ULogs (
     UserID INTEGER NOT NULL,
     Time_Of_Action VARCHAR(40) NOT NULL,
     Action VARCHAR(40) NOT NULL,
-    CONSTRAINT PK_ULogs PRIMARY KEY (UserID)
+    CONSTRAINT PK_ULogs PRIMARY KEY (UserID,Time_Of_Action)
 );
 
 
@@ -183,28 +183,28 @@ CREATE TABLE Supplier (
 
 
 /* ---------------------------------------------------------------------- */
-/* Add table "SupplierTransaction"                                           */
+/* Add table "SupplierProduct"                                           */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE SupplierProduct (
+    SupplierID INTEGER NOT NULL,
+    ProductID INTEGER NOT NULL,
+    Cost NUMERIC(10,2) NOT NULL,
+    CONSTRAINT PK_SupplierProduct PRIMARY KEY (SupplierID, ProductID)
+);
+
+
+/* ---------------------------------------------------------------------- */
+/* Add table "SupplierTransaction"                                          */
 /* ---------------------------------------------------------------------- */
 
 CREATE TABLE SupplierTransaction (
     SupplierID INTEGER NOT NULL,
     ProductID INTEGER NOT NULL,
-    Cost NUMERIC(10,2) NOT NULL,
-    CONSTRAINT PK_SupplierTransaction PRIMARY KEY (SupplierID, ProductID)
-);
-
-
-/* ---------------------------------------------------------------------- */
-/* Add table "Supplier_Product"                                          */
-/* ---------------------------------------------------------------------- */
-
-CREATE TABLE Supplier_Product (
-    SupplierID INTEGER NOT NULL,
-    ProductID INTEGER NOT NULL,
     Purchase_Date VARCHAR(40) NOT NULL,
     Quantity_Ordered INTEGER NOT NULL,
     Total_Price NUMERIC(10,2) NOT NULL,
-    CONSTRAINT PK_Supplier_Product PRIMARY KEY (SupplierID, ProductID)
+    CONSTRAINT PK_SupplierTransaction PRIMARY KEY (SupplierID, ProductID)
 );
 
 
@@ -257,22 +257,22 @@ ALTER TABLE Category_Product ADD CONSTRAINT Product_Category_Product
 ;
 
 
+ALTER TABLE SupplierProduct ADD CONSTRAINT Supplier_SupplierProduct 
+    FOREIGN KEY (SupplierID) REFERENCES Supplier (SupplierID)
+;
+
+
+ALTER TABLE SupplierProduct ADD CONSTRAINT Product_SupplierProduct 
+    FOREIGN KEY (ProductID) REFERENCES Product (ProductID)
+;
+
+
 ALTER TABLE SupplierTransaction ADD CONSTRAINT Supplier_SupplierTransaction 
     FOREIGN KEY (SupplierID) REFERENCES Supplier (SupplierID)
 ;
 
 
 ALTER TABLE SupplierTransaction ADD CONSTRAINT Product_SupplierTransaction 
-    FOREIGN KEY (ProductID) REFERENCES Product (ProductID)
-;
-
-
-ALTER TABLE Supplier_Product ADD CONSTRAINT Supplier_Supplier_Product 
-    FOREIGN KEY (SupplierID) REFERENCES Supplier (SupplierID)
-;
-
-
-ALTER TABLE Supplier_Product ADD CONSTRAINT Product_Supplier_Product 
     FOREIGN KEY (ProductID) REFERENCES Product (ProductID)
 ;
 
