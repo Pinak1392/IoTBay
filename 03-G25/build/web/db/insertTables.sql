@@ -58,7 +58,26 @@ VALUES
 
 -- PLEASE FILL THE ABOVE, ID range goes from 1-20
 
--- INSERT INTO Customer(CustomerID, Street_Number, Street_Name, Postcode, "STATE", Suburb, Country)
--- VALUES
--- (1, 23, 'Alfred', 2789, 'NSW', 'Kingston', 'Australia')
--- (1, 23, 'Alfred', 2789, 'NSW', 'Kingston', 'Australia')
+/* Customer TABLE */
+INSERT INTO Customer(CustomerID, Street_Number, Street_Name, Postcode, "STATE", Suburb, Country)
+VALUES
+(1, 23, 'Alfred', 2789, 'NSW', 'Kingston', 'Australia'),
+(2, 11, 'Alice', 2720, 'NSW', 'Boston', 'Australia'),
+(3, 21, 'Baltic', 2724, 'NSW', 'Koogarah', 'Australia'),
+(4, 42, 'Dellington', 2735, 'NSW', 'Winsville', 'Australia'),
+(6, 43, 'Darley', 2768, 'NSW', 'Hokings', 'Australia'),
+(7, 24, 'Don', 2742, 'NSW', 'Bondie', 'Australia'),
+(11, 33, 'Egan', 2712, 'NSW', 'Junktion', 'Australia'),
+(12, 31, 'Gibbs', 2721, 'NSW', 'Cental', 'Australia'),
+(14, 38, 'Gowrie', 2774, 'NSW', 'Gorden', 'Australia'),
+(15, 96, 'Boochamp', 2777, 'NSW', 'Riversdale', 'Australia'),
+(16, 58, 'Harold', 2786, 'NSW', 'Farmvalley', 'Australia'),
+(22, 37, 'Harry', 2784, 'NSW', 'Cronala', 'Australia'),
+(24, 74, 'Nuts', 2773, 'NSW', 'Haymarden', 'Australia'),
+(25, 62, 'Herbert', 2720, 'NSW', 'Boston', 'Australia'),
+(26, 60, 'Hollis', 2721, 'NSW', 'Cental', 'Australia'),
+(28, 12, 'Balled', 2721, 'NSW', 'Cental', 'Australia'),
+(33, 13, 'Capped', 2721, 'NSW', 'Cental', 'Australia'),
+(36, 78, 'Forbes', 2790, 'NSW', 'Nellar', 'Australia'),
+(37, 79, 'Maria', 2725, 'NSW', 'Vermicci', 'Australia'),
+(39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
