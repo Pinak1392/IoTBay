@@ -17,14 +17,14 @@ Group Features (Due by 15th May)
 
 DBManager implementation/code needed. 
 
-Patch up SQL script and Database - Benz
+Prepopulate tables - Benz
 
 Admin Menu (Default built-in user for app) 
 
 --------------------
 
 Finished:  
-- SQL script and database 
+- Insert/Drop SQL Scripts & Database
 - DBConnector
 - DB abstract class
 
