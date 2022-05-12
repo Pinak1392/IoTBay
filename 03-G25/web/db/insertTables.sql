@@ -81,3 +81,28 @@ VALUES
 (36, 78, 'Forbes', 2790, 'NSW', 'Nellar', 'Australia'),
 (37, 79, 'Maria', 2725, 'NSW', 'Vermicci', 'Australia'),
 (39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
+
+/* Product Table. Issue with PRODUCTID - GENERATED ALWAYS AS IDENTITY, causes duplicate primary keys idk how to fix */
+INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED)
+VALUES
+(1, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor', 0),
+(2, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor', 0),
+(3, 'VCNL4010 Proximity/Light sensor', 7, 14.74, 'sensor', 0),
+(4, 'DFRobot SEN0312 Proximity Sensor', 10, 23.99, 'sensor', 0),
+(5, 'TankMate R3 Tank Level Sensor', 12, 350.00, 'sensor', 0),
+(6, 'Optomax Digital Liquid Level Sensor', 8, 43.99, 'sensor', 0),
+(7, 'Autonics Inductive Proximity Sensor', 9, 40.00, 'sensor', 0),
+(8, 'Spring Return Pneumatic Actuator', 5, 150.00, 'actuator', 0),
+(9, 'VEVOR 20" Stroke Linear Actuator', 9, 52.99, 'actuator', 0),
+(10, 'ACTUATOR - ELECTRIC 24DC X F05', 2, 1300.00, 'actuator', 0),
+(11, 'Schmersal Magnetic Actuator, Plastic', 21, 31.99, 'actuator', 0),
+(12, 'Hamlin 57135-000 Magnetic Actuator', 10, 17.50, 'actuator', 0),
+(13, '230v Electric Thermal Actuator', 23, 10.33, 'actuator', 0),
+(13, 'TG451 Industrial Cellular', 5, 399.00, 'gateway', 0),
+(14, 'F-DPU100', 2, 699.00, 'gateway', 0),
+(15, 'TG452', 9, 530.00, 'gateway', 0),
+(16, 'TY511', 2, 499.00, 'gateway', 0),
+(17, 'Advantech UTX-3117FS-S6A1N', 5, 1490.00, 'gateway', 0),
+(18, 'Lantronix SGX 5150', 3, 688.50, 'gateway', 0),
+(19, 'Ig902', 9, 1000.00, 'gateway', 0),
+(20, 'GL-S10', 9, 36.35, 'gateway', 0);
