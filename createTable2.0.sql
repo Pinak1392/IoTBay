@@ -115,7 +115,7 @@ CREATE TABLE Product (
     Stock INTEGER NOT NULL,
     Price NUMERIC(10,2) NOT NULL,
     Description VARCHAR(40),
-    Archived BOOLEAN NOT NULL,
+    Archived INTEGER NOT NULL,
     CONSTRAINT PK_Product PRIMARY KEY (ProductID)
 );
 
