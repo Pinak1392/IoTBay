@@ -7,9 +7,9 @@ import java.sql.*;
 import java.util.*;
 import java.util.logging.*;
 import model.Product;
-import product.dao.*;
+import dao.*;
 
-public class test {
+public class DeviceCatalogueController {
 
     private static Scanner in = new Scanner(System.in);
 
@@ -19,7 +19,7 @@ public class test {
 
             DBConnector connector = new DBConnector();
             Connection conn = connector.openConnection();
-            DBManager db = new DBManager(conn);
+            ProductManager db = new ProductManager(conn);
 
             System.out.print("PRODUCTID: ");
             int PRODUCTID = in.nextInt();
@@ -47,7 +47,7 @@ public class test {
 
         } catch (ClassNotFoundException | SQLException ex) {
 
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeviceCatalogueController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 

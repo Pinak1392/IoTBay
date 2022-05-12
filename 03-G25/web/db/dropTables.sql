@@ -12,103 +12,31 @@
 /* Drop foreign key constraints                                           */
 /* ---------------------------------------------------------------------- */
 
-ALTER TABLE ULogs DROP CONSTRAINT Users_ULogs;
+ALTER TABLE ULogs DROP CONSTRAINT FK_ULogs;
 
 
-ALTER TABLE Customer DROP CONSTRAINT Users_Customer;
+ALTER TABLE Customer DROP CONSTRAINT FK_Customer;
 
 
-ALTER TABLE Staff DROP CONSTRAINT Users_Staff;
+ALTER TABLE Staff DROP CONSTRAINT FK_Staff;
 
 
-ALTER TABLE Orders DROP CONSTRAINT Customer_Orders;
+ALTER TABLE Card DROP CONSTRAINT FK_Card;
 
 
-ALTER TABLE Order_Product DROP CONSTRAINT Orders_Order_Product;
+ALTER TABLE Payment DROP CONSTRAINT FK_Payment;
 
 
-ALTER TABLE Order_Product DROP CONSTRAINT Product_Order_Product;
+ALTER TABLE Orders DROP CONSTRAINT FK_Orders1;
 
 
-ALTER TABLE Category DROP CONSTRAINT Category_Category;
+ALTER TABLE Orders DROP CONSTRAINT FK_Orders2;
 
 
-ALTER TABLE Category_Product DROP CONSTRAINT Category_Category_Product;
+ALTER TABLE Order_Product DROP CONSTRAINT FK_Order_Product1;
 
 
-ALTER TABLE Category_Product DROP CONSTRAINT Product_Category_Product;
-
-
-ALTER TABLE Supplier_Product DROP CONSTRAINT Supplier_Supplier_Product;
-
-
-ALTER TABLE Supplier_Product DROP CONSTRAINT Product_Supplier_Product;
-
-
-ALTER TABLE SupplierTransaction DROP CONSTRAINT Supplier_SupplierTransaction;
-
-
-ALTER TABLE SupplierTransaction DROP CONSTRAINT Product_SupplierTransaction;
-
-
-/* ---------------------------------------------------------------------- */
-/* Drop table "SupplierTransaction"                                         */
-/* ---------------------------------------------------------------------- */
-
-/* Drop constraints */
-
-ALTER TABLE SupplierTransaction DROP CONSTRAINT PK_SupplierTransaction;
-
-
-DROP TABLE SupplierTransaction;
-
-
-/* ---------------------------------------------------------------------- */
-/* Drop table "Supplier_Product"                                          */
-/* ---------------------------------------------------------------------- */
-
-/* Drop constraints */
-
-ALTER TABLE Supplier_Product DROP CONSTRAINT PK_Supplier_Product;
-
-
-DROP TABLE Supplier_Product;
-
-
-/* ---------------------------------------------------------------------- */
-/* Drop table "Supplier"                                                  */
-/* ---------------------------------------------------------------------- */
-
-/* Drop constraints */
-
-ALTER TABLE Supplier DROP CONSTRAINT PK_Supplier;
-
-
-DROP TABLE Supplier;
-
-
-/* ---------------------------------------------------------------------- */
-/* Drop table "Category_Product"                                          */
-/* ---------------------------------------------------------------------- */
-
-/* Drop constraints */
-
-ALTER TABLE Category_Product DROP CONSTRAINT PK_Category_Product;
-
-
-DROP TABLE Category_Product;
-
-
-/* ---------------------------------------------------------------------- */
-/* Drop table "Category"                                                  */
-/* ---------------------------------------------------------------------- */
-
-/* Drop constraints */
-
-ALTER TABLE Category DROP CONSTRAINT PK_Category;
-
-
-DROP TABLE Category;
+ALTER TABLE Order_Product DROP CONSTRAINT FK_Order_Product2;
 
 
 /* ---------------------------------------------------------------------- */
@@ -145,6 +73,34 @@ ALTER TABLE Orders DROP CONSTRAINT PK_Orders;
 
 
 DROP TABLE Orders;
+
+
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "Payment"                                                    */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE Payment DROP CONSTRAINT PK_Payment;
+
+
+DROP TABLE Payment;
+
+
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "Card"                                                    */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE Card DROP CONSTRAINT PK_Card;
+
+
+DROP TABLE Card;
+
+
 
 
 /* ---------------------------------------------------------------------- */

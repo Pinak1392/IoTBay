@@ -34,11 +34,8 @@ CREATE TABLE ULogs (
     UserID INTEGER NOT NULL,
     Time_Of_Action VARCHAR(40) NOT NULL,
     Action VARCHAR(40) NOT NULL,
-    CONSTRAINT PK_ULogs PRIMARY KEY (UserID)
+    PRIMARY KEY (UserID)
 );
-
-
-
 
 /* ---------------------------------------------------------------------- */
 /* Add table "Customer"                                                   */
@@ -54,10 +51,6 @@ CREATE TABLE Customer (
     "STATE" VARCHAR(40),
     Suburb VARCHAR(40),
     Country VARCHAR(40),
-    CardNo INTEGER,
-    CardExpiry VARCHAR(40),
-    CardPin INTEGER,
-    PaymentMeth VARCHAR(40),
     PRIMARY KEY(CustomerID),
     FOREIGN KEY(CustomerID) REFERENCES Users(UserID)
 );
@@ -69,35 +62,61 @@ CREATE TABLE Customer (
 /* Add table "Staff"                                                      */
 /* ---------------------------------------------------------------------- */
 CREATE TABLE Staff (
-    StaffID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
-    USERID INTEGER NOT NULL,
+    StaffID INTEGER NOT NULL,
     Staff_Position VARCHAR(40),
     Staff_Salary INTEGER,
     Staff_EmploymentDate DATE,
     Permissions VARCHAR(5),
     PRIMARY KEY(StaffID),
-    FOREIGN KEY(UserID) REFERENCES Users(UserID)
+    FOREIGN KEY(StaffID) REFERENCES Users(UserID)
 );
 
+/* ---------------------------------------------------------------------- */
+/* Add table "Card"                                                    */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE Card (
+    CardNo INTEGER NOT NULL,
+    CustomerID INTEGER NOT NULL,
+    CardName VARCHAR(40) NOT NULL,
+    CardExpiry VARCHAR(40) NOT NULL,
+    CardPin INTEGER NOT NULL,
+    PRIMARY KEY(CardNo),
+    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
+);
+
+/* ---------------------------------------------------------------------- */
+/* Add table "Payment"                                                    */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE Payment (
+    PaymentID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
+    PaymentMeth VARCHAR(40) NOT NULL,
+    Cost NUMERIC(10,2) NOT NULL,
+    CardNo INTEGER,
+    PRIMARY KEY(PaymentID),
+    FOREIGN KEY(CardNo) REFERENCES Card(CardNo)
+);
 
 /* ---------------------------------------------------------------------- */
 /* Add table "Orders"                                                     */
 /* ---------------------------------------------------------------------- */
+
 CREATE TABLE Orders (
     OrderID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
     CustomerID INTEGER NOT NULL,
+    PaymentID INTEGER NOT NULL,
+    Order_Date VARCHAR(40) NOT NULL,
     Status VARCHAR(10) NOT NULL,
     Street_Number INTEGER,
     Street_Name VARCHAR(40),
     Postcode INTEGER,
-    State VARCHAR(40),
+    "State" VARCHAR(40),
     Suburb VARCHAR(40),
     Country VARCHAR(40),
-    Order_Date VARCHAR(40) NOT NULL,
-    Cost NUMERIC(10,2) NOT NULL,
-    PaymentMeth VARCHAR(40),
     PRIMARY KEY(OrderID),
-    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
+    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY(PaymentID) REFERENCES Payment(PaymentID)
 );
 
 /* ---------------------------------------------------------------------- */
