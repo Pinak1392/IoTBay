@@ -12,17 +12,18 @@ public class User {
     private int phoneNo;
     private String DOB;
     private Boolean isCustomer;
+    private Boolean isActive;
     private static ArrayList cart = new ArrayList();
-    //private static User activeUser;
     
-    public User(String fname, String lname, String password, String email, String phoneNo, String DOB, Boolean customer) {
+    public User(String fname, String lname, String password, String email, int phoneNo, String DOB, Boolean customer) {
         this.email = email;
         this.fname = fname;
         this.lname = lname;
         this.password = password;
-        this.phoneNo = Integer.parseInt(phoneNo);
+        this.phoneNo = phoneNo;
         this.DOB = DOB;
         this.isCustomer = customer;
+        this.isActive = false; //By default it is true, as they need to login after creating their accounts. 
     }
 
     public String getEmail() {
@@ -52,15 +53,35 @@ public class User {
     public String getDOB() {
         return DOB;
     }
-    
-//    public static User getUser(){
-//        return User.activeUser;
-//    }
-//    
-//    public static void resetUser(){
-//        User.activeUser = null;
-//    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhoneNo(int phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+    
+    public void setActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+    
     @Override
     public String toString() {
         return email + ": " + this.getName();
