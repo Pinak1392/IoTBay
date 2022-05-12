@@ -18,7 +18,7 @@ public class ErrorLogger {
         errors.add(errorMessage);
     }
     
-    public static ArrayList<String> getErrs(String errorMessage){
+    public static ArrayList<String> getErrs(){
         ArrayList<String> temp = new ArrayList<>(errors);
         errors.clear();
         return temp;

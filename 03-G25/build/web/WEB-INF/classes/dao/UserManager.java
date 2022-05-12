@@ -57,6 +57,14 @@ public class UserManager {
        throw new Exception("Error: Incorrect credentials");   
     }
 
+    public void createLog(String uid, String log) throws SQLException, Exception {       
+        String insert = "INSERT INTO USERS(USERID,TIME_OF_ACTION,ACTION)";
+        String values = "VALUES("+uid+")";
+
+        st.executeUpdate(insert + values); 
+    }
+
+    
     public void deactivateUser(String email) throws SQLException, Exception {       
        String fetch = "select * from USERS where EMAIL = '" + email + "'";
        ResultSet rs = st.executeQuery(fetch);
@@ -64,6 +72,7 @@ public class UserManager {
        while(rs.next()){
            String customerEmail = rs.getString(5);
            if(customerEmail.equals(email)){
+               String uID = rs.getString(1);
                String customerFirstName = rs.getString(2);
                String customerLastName = rs.getString(3);
                String customerPassword = rs.getString(4);
@@ -72,7 +81,7 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
 
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
+               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");               
            }
        }
 
@@ -82,10 +91,10 @@ public class UserManager {
     //Add a user-data into the database   
     public void addUser(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
 
-    String insert = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, PASSWORD, EMAIL, PHONENO, DATE_OF_BIRTH, ISCUSTOMER, ACTIVE)";
-    String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', "+phoneNo+", '"+dob+"', '"+isCustomer+"', 'true')";
+        String insert = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, PASSWORD, EMAIL, PHONENO, DATE_OF_BIRTH, ISCUSTOMER, ACTIVE)";
+        String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', "+phoneNo+", '"+dob+"', '"+isCustomer+"', 'true')";
 
-    st.executeUpdate(insert + values);
+        st.executeUpdate(insert + values);
     }
 
 

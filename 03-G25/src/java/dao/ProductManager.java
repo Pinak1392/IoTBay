@@ -18,11 +18,11 @@ import model.Product;
  *
  * @author Jared
  */
-public class DBManager {
+public class ProductManager {
 
     private final Statement st;
 
-    public DBManager(Connection conn) throws SQLException {
+    public ProductManager(Connection conn) throws SQLException {
         st = conn.createStatement();
     }
 

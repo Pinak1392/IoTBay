@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import dao.DBConnector;
@@ -20,14 +15,8 @@ import model.User;
  *
  * @author limay
  */
-<<<<<<< HEAD:03-G25/src/java/controller/UserManagementController.java
 public class UserManagementController {
  
-=======
-public class UserController {
-    public static User activeUser;
-    
->>>>>>> 26b8ce77c7761b7e5d936b1f723dc1bbd1ad01ff:03-G25/build/web/WEB-INF/classes/controller/UserController.java
     private static DBConnector connector;
     private static Connection conn;
     private static UserManager db;
@@ -43,7 +32,7 @@ public class UserController {
             conn = null;
             db = null;
             
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -53,13 +42,8 @@ public class UserController {
             return db.setUser(email, password);
         } catch(Exception e){
             if(e instanceof SQLException){
-<<<<<<< HEAD:03-G25/src/java/controller/UserManagementController.java
                 Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, e);
                 return null;
-=======
-                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
-                return;
->>>>>>> 26b8ce77c7761b7e5d936b1f723dc1bbd1ad01ff:03-G25/build/web/WEB-INF/classes/controller/UserController.java
             }
             
             ErrorLogger.addErr(e.getMessage());
@@ -86,7 +70,6 @@ public class UserController {
             invalid = true;
             ErrorLogger.addErr("Phone number does not fit required length");
         }
-<<<<<<< HEAD:03-G25/src/java/controller/UserManagementController.java
         
         if(!validate("([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2}))",email)){
             invalid = true;
@@ -107,13 +90,9 @@ public class UserController {
                 db.addUser(fName, lName, password, email, phoneNo, dob, isCustomer);
             }
             catch(SQLException e){
-                Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, e);
                 ErrorLogger.addErr("The email is already in use");
             }
-=======
-        catch(SQLException e){
-            Logger.getLogger(CIMController.class.getName()).log(Level.SEVERE, null, e);
->>>>>>> 26b8ce77c7761b7e5d936b1f723dc1bbd1ad01ff:03-G25/build/web/WEB-INF/classes/controller/UserController.java
         }
     }
 }
