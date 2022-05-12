@@ -18,16 +18,16 @@ public class DeviceCatalogueController {
     private DBManager db;
 
     public static void main(String[] args) throws SQLException {
-        new TestDB().runQueries();
+        new DeviceCatalogueController().runQueries();
     }
 
-    public TestDB() {
+    public DeviceCatalogueController() {
         try {
             connector = new DBConnector();
             conn = connector.openConnection();
             db = new DBManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeviceCatalogueController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -77,7 +77,7 @@ public class DeviceCatalogueController {
             });
             System.out.println();
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeviceCatalogueController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -109,7 +109,7 @@ public class DeviceCatalogueController {
         try {
             db.addProduct(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED);
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeviceCatalogueController.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Product is added to the database.");
     }
@@ -141,7 +141,7 @@ in.nextLine();
             in.nextLine();
             db.updateProduct(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED);
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeviceCatalogueController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
