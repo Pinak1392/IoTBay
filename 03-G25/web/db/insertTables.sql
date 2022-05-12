@@ -81,3 +81,28 @@ VALUES
 (36, 78, 'Forbes', 2790, 'NSW', 'Nellar', 'Australia'),
 (37, 79, 'Maria', 2725, 'NSW', 'Vermicci', 'Australia'),
 (39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
+
+/*Product Table (not sure if it works)*/
+INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED)
+VALUES
+(DEFAULT, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor', 0),
+(DEFAULT, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor', 0),
+(DEFAULT, 'VCNL4010 Proximity/Light sensor', 7, 14.74, 'sensor', 0),
+(DEFAULT, 'DFRobot SEN0312 Proximity Sensor', 10, 23.99, 'sensor', 0),
+(DEFAULT, 'TankMate R3 Tank Level Sensor', 12, 350.00, 'sensor', 0),
+(DEFAULT, 'Optomax Digital Liquid Level Sensor', 8, 43.99, 'sensor', 0),
+(DEFAULT, 'Autonics Inductive Proximity Sensor', 9, 40.00, 'sensor', 0),
+(DEFAULT, 'Spring Return Pneumatic Actuator', 5, 150.00, 'actuator', 0),
+(DEFAULT, 'VEVOR 20" Stroke Linear Actuator', 9, 52.99, 'actuator', 0),
+(DEFAULT, 'ACTUATOR - ELECTRIC 24DC X F05', 2, 1300.00, 'actuator', 0),
+(DEFAULT, 'Schmersal Magnetic Actuator, Plastic', 21, 31.99, 'actuator', 0),
+(DEFAULT, 'Hamlin 57135-000 Magnetic Actuator', 10, 17.50, 'actuator', 0),
+(DEFAULT, '230v Electric Thermal Actuator', 23, 10.33, 'actuator', 0),
+(DEFAULT, 'TG451 Industrial Cellular', 5, 399.00, 'gateway', 0),
+(DEFAULT, 'F-DPU100', 2, 699.00, 'gateway', 0),
+(DEFAULT, 'TG452', 9, 530.00, 'gateway', 0),
+(DEFAULT, 'TY511', 2, 499.00, 'gateway', 0),
+(DEFAULT, 'Advantech UTX-3117FS-S6A1N', 5, 1490.00, 'gateway', 0),
+(DEFAULT, 'Lantronix SGX 5150', 3, 688.50, 'gateway', 0),
+(DEFAULT, 'Ig902', 9, 1000.00, 'gateway', 0),
+(DEFAULT, 'GL-S10', 9, 36.35, 'gateway', 0);
