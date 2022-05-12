@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="model.*" %>
+<%@ page import="controller.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,8 +20,10 @@
             <%String DOB = request.getParameter("DOB");%>
             <%String tos = request.getParameter("tos");%>
             <%if(tos != null){%>
-                <%new User(email,fname,lname,password,phoneNo,DOB,true);%>
-                <%User.setUser(email, password);%>
+                <%
+                UserManagementController.addUser(fname,lname,password,email,phoneNo,DOB,true);
+                UserManagementController.setUser(email, password);
+                %>
             <%} else {%>
                 <jsp:forward page="Register.jsp" />
             <%}%>

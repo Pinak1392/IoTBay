@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/src/java/model/Item.java</file>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/web/Purchase.jsp</file>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/web/Catalogue.jsp</file>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/web/Register.jsp</file>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/web/Login.jsp</file>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/web/index.jsp</file>
-            <file>file:/C:/Users/Andy/Downloads/03-G25/web/Checkout.jsp</file>
+            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/controller/UserManagementController.java</file>
+            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/controller/ErrorLogger.java</file>
+            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/model/User.java</file>
+            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/web/index.jsp</file>
+            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/dao/UserManager.java</file>
         </group>
     </open-files>
 </project-private>
