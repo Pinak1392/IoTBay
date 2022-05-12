@@ -15,7 +15,7 @@ Each feature has a View, Controller (Servlet), Model, Manager.
 
 Group Features (Due by 15th May)
 
-Prepopulate tables - Benz
+Prepopulate tables (ULogs, Payment, Orders, Order_Product)
 
 Admin Menu (Default built-in user for app) 
 
