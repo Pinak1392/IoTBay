@@ -13,14 +13,14 @@ import java.sql.*;
 import java.util.*;
 import java.util.logging.*;
 import model.Product;
-import product.dao.*;
+import dao.*;
 
 public class DeviceCatalogueController {
 
     private static final Scanner in = new Scanner(System.in);
     private DBConnector connector;
     private Connection conn;
-    private DBManager db;
+    private ProductManager db;
 
     public static void main(String[] args) throws SQLException {
         new DeviceCatalogueController().runQueries();
@@ -30,7 +30,7 @@ public class DeviceCatalogueController {
         try {
             connector = new DBConnector();
             conn = connector.openConnection();
-            db = new DBManager(conn);
+            db = new ProductManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DeviceCatalogueController.class.getName()).log(Level.SEVERE, null, ex);
         }

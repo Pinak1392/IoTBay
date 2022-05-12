@@ -82,7 +82,7 @@ VALUES
 (37, 79, 'Maria', 2725, 'NSW', 'Vermicci', 'Australia'),
 (39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
 
-/*Product Table (not sure if it works)*/
+/*Product Table*/
 INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED)
 VALUES
 (DEFAULT, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor', 0),
