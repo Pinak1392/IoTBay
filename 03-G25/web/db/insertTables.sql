@@ -81,3 +81,33 @@ VALUES
 (36, 78, 'Forbes', 2790, 'NSW', 'Nellar', 'Australia'),
 (37, 79, 'Maria', 2725, 'NSW', 'Vermicci', 'Australia'),
 (39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
+
+-- /* Card TABLE */
+-- INSERT INTO Card(CardNo, CustomerID, CardName, CardExpiry, CardPin)
+-- VALUES 
+-- (, 1, )
+
+/* Staff TABLE */
+INSERT INTO Staff(StaffID, Staff_Position, Staff_Salary, Staff_EmploymentDate, Permissions)
+VALUES
+(5, 'Employee', 5000, '2020-10-08', '1'),
+(8, 'Employee', 5000, '2020-10-08', '1'),
+(9, 'Employee', 5000, '2020-10-08', '1'),
+(10, 'Supervisor', 6500, '2020-10-08', '2'),
+(13, 'Employee', 5000, '2020-10-08', '1'),
+(17, 'Manager', 8000, '2020-10-08', '3'),
+(18, 'Supervisor', 6500, '2020-10-08', '2'),
+(19, 'Employee', 5000, '2020-10-08', '1'),
+(20, 'Employee', 5000, '2020-10-08', '1'),
+(21, 'Supervisor', 6500, '2020-10-08', '2'),
+(23, 'Employee', 5000, '2020-10-08', '1'),
+(27, 'Manager', 8000, '2020-10-08', '3'),
+(29, 'Owner', 10000, '2020-10-08', '4'),
+(30, 'Supervisor', 6500, '2020-10-08', '2'),
+(31, 'Employee', 5000, '2020-10-08', '1'),
+(32, 'Employee', 5000, '2020-10-08', '1'),
+(34, 'Supervisor', 6500, '2020-10-08', '2'),
+(35, 'Manager', 8000, '2020-10-08', '3'),
+(38, 'Supervisor', 6500, '2020-10-08', '2'),
+(40, 'Employee', 5000, '2020-10-08', '1');
+
