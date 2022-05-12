@@ -9,13 +9,11 @@ Individual Features (Due by 15th May)
 - 07 - Tim
 - 08 - Benz
 
-Each feature has a View, Controller (Servlet), Model. 
+Each feature has a View, Controller (Servlet), Model, Manager. 
 
 --------------------
 
 Group Features (Due by 15th May)
-
-DBManager implementation/code needed. 
 
 Prepopulate tables - Benz
 
