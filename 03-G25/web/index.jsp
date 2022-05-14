@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="controller.*" %>
 <!DOCTYPE html>
@@ -7,32 +8,7 @@
         <title>IoTBay Home</title>
     </head>
     <body>
-        <%String formType = request.getParameter("form"); %>
-        <%String email; %>
-        <%String password; %>
-        <%--Item.ClearCart();--%>
-        <%if(formType != null && formType.equals("register")){ %>
-            <%email = request.getParameter("email");%>
-            <%String fname = request.getParameter("fname");%>
-            <%String lname = request.getParameter("lname");%>
-            <%password = request.getParameter("password");%>
-            <%String phoneNo = request.getParameter("phoneNo");%>
-            <%String DOB = request.getParameter("DOB");%>
-            <%String tos = request.getParameter("tos");%>
-            <%
-                UserManagementController.addUser(fname,lname,password,email,phoneNo,DOB,true);
-                session.setAttribute("User",UserManagementController.setUser(email, password));
-            %>
-            <jsp:forward page="Register.jsp" />
-        <%}else if(formType != null && formType.equals("login")) {%>
-            <%email = request.getParameter("email");%>
-            <%password = request.getParameter("password");%>
-            <%User.setUser(email, password);%>
-            <%if(User.getUser() == null){%>
-                <jsp:forward page="Login.jsp" />
-            <%}%>
-        <%}%>
-        <%User u = User.getUser();%>
+        <% User u = (User)session.getAttribute("user"); %>
         
         <% if(u == null){ %>
             <a href="Login.jsp">Login</a>

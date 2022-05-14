@@ -93,12 +93,13 @@ public class UserManager {
     }
 
     //Add a user-data into the database   
-    public void addUser(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
+    public User addUser(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
 
         String insert = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, PASSWORD, EMAIL, PHONENO, DATE_OF_BIRTH, ISCUSTOMER, ACTIVE)";
         String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', "+phoneNo+", '"+dob+"', '"+isCustomer+"', 'true')";
 
         st.executeUpdate(insert + values);
+        return new User(fName, lName, password, email, phoneNo, dob, isCustomer);
     }
 
 

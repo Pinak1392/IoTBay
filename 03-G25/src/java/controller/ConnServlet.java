@@ -44,7 +44,6 @@ package controller;
         
 
        @Override //Create and instance of DBConnector for the deployment session
-
        public void init() {
 
            try {
@@ -62,7 +61,6 @@ package controller;
       
 
        @Override //Add the DBConnector, DBManager, Connection instances to the session
-
        protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
                throws ServletException, IOException {
@@ -92,7 +90,6 @@ package controller;
         
 
        @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
-
         public void destroy() {
 
            try {

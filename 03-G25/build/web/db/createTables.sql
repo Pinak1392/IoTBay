@@ -125,7 +125,7 @@ CREATE TABLE Orders (
 /* ---------------------------------------------------------------------- */
 
 CREATE TABLE Product (
-    ProductID INTEGER NOT NULL,
+    ProductID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
     ProductName VARCHAR(40) NOT NULL,
     Stock INTEGER NOT NULL,
     Price NUMERIC(10,2) NOT NULL,
