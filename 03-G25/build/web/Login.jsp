@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="controller.ErrorLogger"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,17 +10,11 @@
     <body>
         <a href="index.jsp">Homepage</a>
         <a href="Register.jsp">Register</a>
-        <p style="color:red">
-            <%String formType = request.getParameter("form"); %>
-            <%if(formType != null){ %>
-                Error: Invalid credentials
-            <%}%>
-        </p>
         
         <div id="errorDiv">
             <%
               ArrayList<String> errors = ErrorLogger.getErrs();
-              for(int i = 0; i < errors.size()){ %>
+              for(int i = 0; i < errors.size(); i++){ %>
               <p><%= errors.get(i) %></p>
             <% } %>
         </div>

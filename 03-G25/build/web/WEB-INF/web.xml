@@ -1,22 +1,44 @@
-<xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaeeLinks to an external site." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instanceLinks to an external site." xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaeeLinks to an external site. http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsdLinks to an external site.">
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsds">
 
     <servlet>
 
-        <servlet-name>ConnServlet </servlet-name>
+        <servlet-name> LoginServelet </servlet-name>
 
-        <servlet-class>controller.ConnServlet </servlet-class>
+        <servlet-class> controller.LoginServelet </servlet-class>
 
-        <load-on-startup>0</load-on-startup>
+        <load-on-startup> 0 </load-on-startup>
 
      </servlet>
 
     <servlet-mapping>
 
-        <servlet-name>ConnServlet </servlet-name>
+        <servlet-name> LoginServelet </servlet-name>
 
-        <url-pattern>/ConnServlet </url-pattern>
+        <url-pattern> /LoginServelet </url-pattern>
+
+     </servlet-mapping>
+     
+     <servlet>
+
+        <servlet-name> RegisterServlett </servlet-name>
+
+        <servlet-class> controller.RegisterServlett </servlet-class>
+
+        <load-on-startup> 0 </load-on-startup>
+
+     </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name> RegisterServlett </servlet-name>
+
+        <url-pattern> /RegisterServlett </url-pattern>
 
      </servlet-mapping>
 

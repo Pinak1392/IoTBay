@@ -62,13 +62,14 @@ public class LoginServelet extends HttpServlet {
 
 
     @Override //Add the DBConnector, DBManager, Connection instances to the session
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");       
 
         session = request.getSession();
+        
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         conn = db.openConnection();       
 

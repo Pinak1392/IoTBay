@@ -82,6 +82,8 @@ public class RegisterServlett extends HttpServlet {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+        
+        //request.getParameter('fname');
 
         //export the DB manager to the view-session (JSPs)
         session.setAttribute("Umanager", manager);

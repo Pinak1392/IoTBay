@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="controller.ErrorLogger"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +14,7 @@
         <div id="errorDiv">
             <%
               ArrayList<String> errors = ErrorLogger.getErrs();
-              for(int i = 0; i < errors.size()){ %>
+              for(int i = 0; i < errors.size(); i++){ %>
               <p><%= errors.get(i) %></p>
             <% } %>
         </div>
