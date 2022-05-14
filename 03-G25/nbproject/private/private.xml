@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/dao/CIMManager.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/controller/UserManagementController.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/controller/ErrorLogger.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/dao/DBConnector.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/dao/ProductManager.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/model/User.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/dao/DB.java</file>
-            <file>file:/C:/Users/limay/OneDrive/Desktop/IoTBay/03-G25/src/java/dao/UserManager.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

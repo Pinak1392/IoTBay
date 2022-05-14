@@ -31,10 +31,11 @@ CREATE TABLE Users (
 
 
 CREATE TABLE ULogs (
-    UserID INTEGER NOT NULL,
+    ULogsID INTEGER NOT NULL,
     Time_Of_Action VARCHAR(40) NOT NULL,
-    "Action" VARCHAR(40) NOT NULL,
-    CONSTRAINT PK_ULogs PRIMARY KEY (UserID)
+    ActionDesc VARCHAR(40) NOT NULL,
+    CONSTRAINT PK_ULogs PRIMARY KEY (ULogsID, Time_Of_Action),
+    CONSTRAINT FK_ULogs FOREIGN KEY(ULogsID) REFERENCES Users(UserID)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -76,7 +77,7 @@ CREATE TABLE Staff (
 /* ---------------------------------------------------------------------- */
 
 CREATE TABLE Card (
-    CardNo INTEGER NOT NULL,
+    CardNo NUMERIC(16) NOT NULL,
     CustomerID INTEGER NOT NULL,
     CardName VARCHAR(40) NOT NULL,
     CardExpiry VARCHAR(40) NOT NULL,
@@ -93,7 +94,7 @@ CREATE TABLE Payment (
     PaymentID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
     PaymentMeth VARCHAR(40) NOT NULL,
     Cost NUMERIC(10,2) NOT NULL,
-    CardNo INTEGER,
+    CardNo NUMERIC(16),
     CONSTRAINT PK_Payment PRIMARY KEY(PaymentID),
     CONSTRAINT FK_Payment FOREIGN KEY(CardNo) REFERENCES Card(CardNo)
 );
@@ -129,6 +130,7 @@ CREATE TABLE Product (
     Stock INTEGER NOT NULL,
     Price NUMERIC(10,2) NOT NULL,
     Description VARCHAR(40),
+    Archived INTEGER NOT NULL,
     CONSTRAINT PK_Product PRIMARY KEY (ProductID)
 );
 

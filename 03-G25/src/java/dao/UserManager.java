@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import model.User;
 
@@ -50,16 +52,18 @@ public class UserManager {
                }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
-               return new User(customerFirstName, customerLastName, customerPassword, customerEmail, customerPhoneNo, customerDOB, Boolean.parseBoolean(customerIsCustomer));
+               return new User(customerFirstName, customerLastName, customerPassword, customerEmail, Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer));
            }
        }
 
        throw new Exception("Error: Incorrect credentials");   
     }
 
-    public void createLog(String uid, String log) throws SQLException, Exception {       
-        String insert = "INSERT INTO USERS(USERID,TIME_OF_ACTION,ACTION)";
-        String values = "VALUES("+uid+")";
+    public void createLog(String uid, String log) throws SQLException, Exception {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now();
+        String insert = "INSERT INTO USERS(USERID,TIME_OF_ACTION,ACTIONDESC)";
+        String values = "VALUES("+uid+",'"+dtf.format(now)+"','Logged in')";
 
         st.executeUpdate(insert + values); 
     }
