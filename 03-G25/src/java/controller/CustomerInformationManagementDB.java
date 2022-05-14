@@ -19,7 +19,7 @@ import model.CustomerInformationManagement;
  *
  * @author timmy
  */
-public class CustomerInformationManagementController {
+public class CustomerInformationManagementDB {
 
 private static Scanner in = new Scanner(System.in);
 private DBConnector connector;
@@ -28,10 +28,10 @@ private CustomerInformationManagementManager db;
  
 
 public static void main(String[] args) throws SQLException {
-    (new CustomerInformationManagementController()).runQueries();
+    (new CustomerInformationManagementDB()).runQueries();
 }
 
-public CustomerInformationManagementController(){
+public CustomerInformationManagementDB(){
     try{
         connector = new DBConnector();
         conn = connector.openConnection();
@@ -39,7 +39,7 @@ public CustomerInformationManagementController(){
     }
     
     catch(ClassNotFoundException | SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CustomerInformationManagementDB.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
@@ -111,7 +111,7 @@ String active = in.nextLine();
         db.addCustomerInformationManagement(fname, lname, password, email, Integer.parseInt(phoneNo), dob, Boolean.parseBoolean(isCustomer), Boolean.parseBoolean(active));
     }
     catch(SQLException ex){
-       Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex); 
+       Logger.getLogger(CustomerInformationManagementDB.class.getName()).log(Level.SEVERE, null, ex); 
     }
     System.out.println("User is added to the database.");
 }
@@ -169,7 +169,7 @@ String active = in.nextLine();
     }
     
     catch(SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CustomerInformationManagementDB.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
@@ -187,7 +187,7 @@ private void testDelete(){
     }
     
     catch (SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CustomerInformationManagementDB.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
@@ -201,7 +201,7 @@ private void showAll(){
         System.out.println();
     }
     catch(SQLException ex){
-        Logger.getLogger(CustomerInformationManagementController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CustomerInformationManagementDB.class.getName()).log(Level.SEVERE, null, ex);
 
     }
 }
