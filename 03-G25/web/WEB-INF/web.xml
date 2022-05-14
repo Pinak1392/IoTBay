@@ -5,7 +5,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/
                              http://java.sun.com/xml/ns/javaee/web-app_3_0.xsds">
-
+    
+    <servlet>
+        
+        <servlet-name>ConnServlet</servlet-name> 
+            
+        <servlet-class>controller.ConnServlet </servlet-class>
+        
+        <load-on-startup>0</load-on-startup>
+        
+    </servlet>
+    
+    <servlet-mapping>
+        
+        <servlet-name>ConnServlet</servlet-name>
+        
+        <url-pattern>/ConnServlet</url-pattern>
+        
+    </servlet-mapping>
+    
     <servlet>
 
         <servlet-name> LoginServelet </servlet-name>
@@ -43,12 +61,6 @@
      </servlet-mapping>
      
     <!-- Staff Servlets Below (Benz) -->
-    
-    <servlet>
-        <servlet-name>ConnServlet</servlet-name>
-        <servlet-class>controller.staffinfo.ConnServlet </servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
     
     <servlet>
         <servlet-name>StaffLoginServlet</servlet-name>
@@ -95,11 +107,6 @@
         <servlet-name>UpdateStaffServlet</servlet-name>
         <servlet-class>controller.staffinfo.UpdateStaffServlet</servlet-class>
     </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>ConnServlet</servlet-name>
-        <url-pattern>/StaffInfo/ConnServlet</url-pattern>
-    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>StaffLoginServlet</servlet-name>

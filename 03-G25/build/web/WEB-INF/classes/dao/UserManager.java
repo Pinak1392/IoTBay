@@ -52,7 +52,7 @@ public class UserManager {
                }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
-               return new User(customerFirstName, customerLastName, customerPassword, customerEmail, Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer));
+               return new User(customerFirstName, customerLastName, customerPassword, customerEmail, Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer), true);
            }
        }
 
@@ -99,7 +99,8 @@ public class UserManager {
         String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', "+phoneNo+", '"+dob+"', '"+isCustomer+"', 'true')";
 
         st.executeUpdate(insert + values);
-        return new User(fName, lName, password, email, phoneNo, dob, isCustomer);
+        return new User(fName, lName, password, email, phoneNo, dob, isCustomer, false);
+        // By default the added user is not active unless logged in. 
     }
 
 

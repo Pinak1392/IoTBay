@@ -12,17 +12,21 @@ public class User {
     private int phoneNo;
     private String DOB;
     private Boolean isCustomer;
-    private static ArrayList cart = new ArrayList();
+    private Boolean isActive;
+    // private static ArrayList cart = new ArrayList();
+    // cart shouldn't be in User, should be in Customer model. 
+    // Customer model has additional fields: address, suburb...
     
-    public User(String fname, String lname, String password, String email, int phoneNo, String DOB, Boolean customer) {
+    public User(String fname, String lname, String password, String email, int phoneNo, String DOB, Boolean isCustomer, Boolean isActive) {
         this.email = email;
         this.fname = fname;
         this.lname = lname;
         this.password = password;
         this.phoneNo = phoneNo;
         this.DOB = DOB;
-        this.isCustomer = customer;
-    }
+        this.isCustomer = isCustomer;
+        this.isActive = isActive;
+    } // Added isActive needed by System Admin to check list of staff and who's online so don't delete pls
 
     public String getEmail() {
         return email;
@@ -74,6 +78,14 @@ public class User {
 
     public void setDOB(String DOB) {
         this.DOB = DOB;
+    }
+    
+    public void setActive(Boolean active) {
+        this.isActive = active;
+    }
+    
+    public Boolean getActive() {
+        return this.isActive;
     }
     
     @Override

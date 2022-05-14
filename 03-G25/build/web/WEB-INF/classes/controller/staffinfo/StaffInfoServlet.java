@@ -1,7 +1,14 @@
-package controller;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controller.staffinfo;
 
- 
-
+/**
+ *
+ * @author Benz Chua Zi Chern 14303489
+ */
    import java.io.IOException;
 
    import java.sql.Connection;
@@ -26,7 +33,7 @@ package controller;
 
  
 
-   public class ConnServlet extends HttpServlet {
+   public class StaffInfoServlet extends HttpServlet{
 
  
 
@@ -36,10 +43,8 @@ package controller;
 
        private Connection conn;
 
-        
-
-       @Override //Create and instance of DBConnector for the deployment session
-
+       // Create and instance of DBConnector for the deployment session
+       @Override 
        public void init() {
 
            try {
@@ -48,7 +53,7 @@ package controller;
 
            } catch (ClassNotFoundException | SQLException ex) {
 
-               Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(StaffInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
 
            }      
 
@@ -56,7 +61,7 @@ package controller;
 
       
 
-       @Override //Add the DBConnector, DBManager, Connection instances to the session
+       @Override //Add the DBConnector, StaffInfoManager, Connection instances to the session
 
        protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
@@ -74,13 +79,13 @@ package controller;
 
            } catch (SQLException ex) {
 
-               Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(StaffInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
 
            }
 
-           //export the DB manager to the view-session (JSPs)
+           //export the Staff manager to the view-session (JSPs)
 
-           session.setAttribute("StaffInfoManager", manager);           
+           session.setAttribute("staffInfoManager", manager);           
 
        }   
 
@@ -96,10 +101,13 @@ package controller;
 
            } catch (SQLException ex) {
 
-               Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(StaffInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
 
            }
 
        }
 
    }
+        
+
+    

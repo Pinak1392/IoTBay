@@ -1,5 +1,7 @@
 package model;
 
+/* @author Benz Chua Zi Chern 14303489 */
+
 public class Staff extends User {
 
     private String staffPosition;
@@ -7,12 +9,13 @@ public class Staff extends User {
     private String staffEmploymentDate;
     private String permissions;
 
+    // used by DAO and only DAO
     public Staff(String email, String fname, String lname, 
-                String password, int phoneNo, String DOB, Boolean isCustomer,
+                String password, int phoneNo, String DOB, Boolean isCustomer, Boolean isActive,
                 String staffPosition, int staffSalary, String staffEmploymentDate,
                 String permissions) {
 
-        super(email, fname, lname, password, phoneNo, DOB, isCustomer);
+        super(email, fname, lname, password, phoneNo, DOB, isCustomer, isActive);
         this.staffPosition = staffPosition;
         this.staffEmploymentDate = staffEmploymentDate;
         this.staffSalary = staffSalary;
@@ -20,6 +23,7 @@ public class Staff extends User {
     }
     
     /* Getters and Setters below */
+    /* Used by DAO and Controller */
 
     public String getStaffPosition() {
             return staffPosition;

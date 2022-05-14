@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
  
@@ -37,13 +32,14 @@ package controller;
 
        private DBConnector db;
 
-       private ProductManager manager;
+       private StaffInfoManager manager;
 
        private Connection conn;
 
         
 
        @Override //Create and instance of DBConnector for the deployment session
+
        public void init() {
 
            try {
@@ -61,6 +57,7 @@ package controller;
       
 
        @Override //Add the DBConnector, DBManager, Connection instances to the session
+
        protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
                throws ServletException, IOException {
@@ -73,7 +70,7 @@ package controller;
 
            try {
 
-               manager = new ProductManager(conn);
+               manager = new StaffInfoManager(conn);
 
            } catch (SQLException ex) {
 
@@ -83,13 +80,14 @@ package controller;
 
            //export the DB manager to the view-session (JSPs)
 
-           session.setAttribute("manager", manager);           
+           session.setAttribute("StaffInfoManager", manager);           
 
        }   
 
         
 
        @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
+
         public void destroy() {
 
            try {
