@@ -11,9 +11,7 @@
         <title>Staff Home Page</title>
     </head> 
     
-    <body>
-        <div class="">
-            
+    <body class="overflow-hidden">
             <% User u = (User)session.getAttribute("user"); %>
             
             <div class="row bg-info bg-gradient pt-3 pb-2">
@@ -54,9 +52,11 @@
                     </div>
                 </div>
             </div>  
-                    
-        </div>
-                    
+                        
+            
+            <img class="img-responsive" src="index.jpeg"> 
+            
+
         <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>
