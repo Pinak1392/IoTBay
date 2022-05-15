@@ -24,7 +24,7 @@
             </div>
         </header>
         <h1>Payment</h1><br><br><br><br><br><br>
-        <form method="POST" action="Payment.jsp">
+        <form method="POST" action="PaymentSuccess.jsp">
         <select id="paymentmethod">
             <option value="Credit Card" >Credit Card</option>
             <option value="PayPal" disabled>PayPal (temporarily unavailable)</option> </select><br><br>
