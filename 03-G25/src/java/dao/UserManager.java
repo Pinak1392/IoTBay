@@ -73,7 +73,7 @@ public class UserManager {
     }
 
     
-    public void viewLogs(String email, String date) throws SQLException, Exception {       
+    /*public void viewLogs(String email, String date) throws SQLException, Exception {       
        String fetch = "select * from USERS where EMAIL = '" + email + "'";
        ResultSet rs = st.executeQuery(fetch);
 
@@ -114,7 +114,7 @@ public class UserManager {
        }
 
        throw new Exception("Error: User not found");
-    }
+    }*/
     
     public void deactivateUser(String email) throws SQLException, Exception {       
        String fetch = "select * from USERS where EMAIL = '" + email + "'";

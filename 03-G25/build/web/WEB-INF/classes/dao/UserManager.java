@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import model.Log;
 import model.User;
 
 /**
@@ -71,6 +72,49 @@ public class UserManager {
         st.executeUpdate(insert + values); 
     }
 
+    
+    /*public void viewLogs(String email, String date) throws SQLException, Exception {       
+       String fetch = "select * from USERS where EMAIL = '" + email + "'";
+       ResultSet rs = st.executeQuery(fetch);
+
+       while(rs.next()){
+           String customerEmail = rs.getString(5);
+           if(customerEmail.equals(email)){
+               String uid = rs.getString(1);
+               String customerFirstName = rs.getString(2);
+               String customerLastName = rs.getString(3);
+               String customerPassword = rs.getString(4);
+               String customerPhoneNo = rs.getString(6);
+               String customerDOB = rs.getString(7);
+               String customerIsCustomer = rs.getString(8);
+               String customerActive = rs.getString(9);
+               
+               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
+               return getLogs(uid,date);
+           }
+       }
+
+       throw new Exception("Error: User not found");
+    }
+    
+    public void getLogs(String uid, String date) throws SQLException, Exception {       
+       String fetch = "select * from ULOGS where ULOGSID = " + uid;
+       ResultSet rs = st.executeQuery(fetch);
+       ArrayList<Log> logs = new ArrayList<Log>();
+
+       while(rs.next()){
+           String userid = rs.getString(1);
+           if(userid.equals(uid)){
+               String datetime = rs.getString(2);
+               String action = rs.getString(3);
+               
+               createLog(uid,"User logged out");
+               return;
+           }
+       }
+
+       throw new Exception("Error: User not found");
+    }*/
     
     public void deactivateUser(String email) throws SQLException, Exception {       
        String fetch = "select * from USERS where EMAIL = '" + email + "'";

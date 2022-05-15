@@ -99,6 +99,9 @@ public class UpdateServlet extends HttpServlet {
         
         try{
             session.setAttribute("user", addUser(fname,lname,password,email,phoneNo,DOB,true));
+            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+            addErr.add("Successfully updated your info");
+            session.setAttribute("errors",addErr);
             request.getRequestDispatcher("UpdateUser.jsp").include(request, response);
         } catch(Exception e){
             request.getRequestDispatcher("UpdateUser.jsp").include(request, response);
