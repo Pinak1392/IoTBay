@@ -41,7 +41,7 @@
                 Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
                 /* Create a connection by using getConnection() method that takes parameters 
         of string type connection url, user name and password to connect to database.*/
-                connection = DriverManager.getConnection(connectionURL + "database", "admin1", "admin");
+                connection = DriverManager.getConnection(connectionURL + "usersdb", "usersdb", "admin");
                 /* createStatement() is used for create statement object that is used for 
         sending sql statements to the specified database. */
                 statement = connection.createStatement();
