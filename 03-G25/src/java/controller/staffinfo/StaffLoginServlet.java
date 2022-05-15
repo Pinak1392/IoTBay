@@ -10,7 +10,6 @@ package controller.staffinfo;
  * @author Benz Chua Zi Chern 14303489
  */
     import controller.Validator;
-import controller.Validator;
 
     import java.io.IOException;
 
@@ -61,34 +60,36 @@ public class StaffLoginServlet extends HttpServlet {
             session.setAttribute("L_passwordErr", "Error: Incorrect Password Format!");
         }
         
+        if ((!validator.validateEmail(email)) || (!validator.validatePassword(password))) {
+            request.getRequestDispatcher("StaffLogin.jsp").include(request, response);
+        }
+        
         if (validator.validateEmail(email) && validator.validatePassword(password)) {
             try {
                 staff = manager.findStaff(email, password);
                 
                 if (staff != null) {
-                    
-                    if (staff.getPermissions().equals('4')) {
+                
+                    if (staff.getPermissions().equals("4")) {
                         session.setAttribute("admin", staff);
                         request.getRequestDispatcher("AdminMenu.jsp").include(request, response);
-                        return;
                     } else {
                         session.setAttribute("staff", staff);
                         request.getRequestDispatcher("StaffMenu.jsp").include(request, response);
-                        return;
                     }
                     
                 }
                 else {
                     session.setAttribute("L_existErr", "Error: Staff Account Not Found!");
+                    request.getRequestDispatcher("StaffLogin.jsp").include(request, response);
                 }
                 
             }  catch (Exception e) {
-                session.setAttribute("L_existErr", "Error: Staff Account Not Found!");
+                session.setAttribute("L_existErr", e.getMessage());
                 Logger.getLogger(StaffLoginServlet.class.getName()).log(Level.SEVERE, null, e);
+                request.getRequestDispatcher("StaffLogin.jsp").include(request, response);
             }
         }
-        
-        request.getRequestDispatcher("StaffLogin.jsp").include(request, response);
         
     }
     
