@@ -187,6 +187,9 @@ public class UpdateServlet extends HttpServlet {
                 throw new Exception("Error updating database");
             }
         }
+<<<<<<< HEAD
+>>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
+=======
 >>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
 //        
         session.setAttribute("errors",addErr);
