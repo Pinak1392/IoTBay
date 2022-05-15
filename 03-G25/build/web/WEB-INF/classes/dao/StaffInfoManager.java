@@ -24,8 +24,7 @@ public class StaffInfoManager {
     //Find staff by email and password in the database, for login
     //System Admin can login with staff info which activates their status
     public Staff findStaff(String email, String password) throws SQLException, Exception  {
-        String fetch = "SELECT * FROM ISDUSER.USERS A INNER JOIN ISDUSER.STAFF B on A.USERID = B.STAFFID "
-                + "WHERE EMAIL='" + email + "' AND PASSWORD='" + password + "' AND ISCUSTOMER=FALSE";
+        String fetch = "SELECT * FROM ISDUSER.USERS A INNER JOIN ISDUSER.STAFF B on A.USERID = B.STAFFID WHERE EMAIL='" + email + "' AND PASSWORD='" + password + "' AND ISCUSTOMER=FALSE";
         ResultSet rs = st.executeQuery(fetch);
         
         while (rs.next()) {
@@ -44,7 +43,7 @@ public class StaffInfoManager {
                 String employmentDate = rs.getString(13);
                 String permissions = rs.getString(14);
             
-                if(Boolean.parseBoolean(isActive)){
+                if(isActive.equals("true")){
                        throw new Exception("Error: This account is currently logged in on another device!");
                 }
                 else {
@@ -79,11 +78,15 @@ public class StaffInfoManager {
     public Staff addStaff(String email, String fname, String lname, 
                 String password, String phoneNo, String DOB, 
                 String staffPosition, int staffSalary, String staffEmploymentDate,
-                String permissions) throws SQLException {
+                String permissions) throws SQLException, Exception {
+        
+        if (email.equals("jarettthelegend@gmail.com")) {
+            throw new Exception("Error: Admin Account cannot be added!");
+        }
         
         st.executeUpdate("INSERT INTO ISDUSER.USERS VALUES "
                 + "(DEFAULT, '" + fname + "', '" + lname + "', '" + password + "', "
-                        + "'" + email + "', " + phoneNo + ", '" + DOB + "', FALSE, FALSE)");
+                        + "'" + email + "', '" + phoneNo + "', '" + DOB + "', FALSE, FALSE)");
         
         ResultSet rs = st.executeQuery("SELECT UserID FROM ISDUSER.USERS WHERE email='" + email + "'");
         rs.next();
@@ -102,6 +105,10 @@ public class StaffInfoManager {
                 String staffPosition, int staffSalary, String staffEmploymentDate,
                 String permissions) throws SQLException, Exception {
         
+        if (oldEmail.equals("jarettthelegend@gmail.com")) {
+            throw new Exception("Error: Admin Account cannot be deleted!");
+        }
+        
         ResultSet rs = st.executeQuery("SELECT UserID FROM ISDUSER.USERS WHERE email='" + oldEmail + "'");
         if (rs.next()) {
             int staffID = Integer.parseInt(rs.getString(1));
@@ -114,7 +121,7 @@ public class StaffInfoManager {
                 email = newEmail;
             }
             
-            st.executeUpdate("UPDATE ISDUSER.USERS SET EMAIL='" + email + "', First_Name= '" + fname + "', Last_Name= '" + lname + "', PASSWORD= '" + password + "', PHONENO= " + phoneNo + ", Date_Of_Birth= '" + DOB + "'  WHERE USERID= " + staffID + " ");
+            st.executeUpdate("UPDATE ISDUSER.USERS SET EMAIL='" + email + "', First_Name= '" + fname + "', Last_Name= '" + lname + "', PASSWORD= '" + password + "', PHONENO= '" + phoneNo + "', Date_Of_Birth= '" + DOB + "'  WHERE USERID= " + staffID + " ");
             st.executeUpdate("UPDATE ISDUSER.STAFF SET Staff_Position='" + staffPosition + "', Staff_Salary='" + staffSalary + "', Staff_EmploymentDate='" + staffEmploymentDate + "', Permissions='" + permissions + "' WHERE STAFFID= " + staffID + " ");
         }
         else {
@@ -125,6 +132,10 @@ public class StaffInfoManager {
     
     // Delete staff, sysadmin do this
     public void deleteStaff(String email) throws SQLException, Exception {
+        
+        if (email.equals("jarettthelegend@gmail.com")) {
+            throw new Exception("Error: Admin Account cannot be deleted!");
+        }
         
         ResultSet rs = st.executeQuery("SELECT UserID FROM ISDUSER.USERS WHERE email='" + email + "'");
         if (rs.next()) {

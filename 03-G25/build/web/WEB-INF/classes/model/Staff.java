@@ -15,7 +15,7 @@ public class Staff extends User {
                 String staffPosition, int staffSalary, String staffEmploymentDate,
                 String permissions) {
 
-        super(email, fname, lname, password, phoneNo, DOB, isCustomer, isActive);
+        super(fname, lname, password, email, phoneNo, DOB, isCustomer, isActive);
         this.staffPosition = staffPosition;
         this.staffEmploymentDate = staffEmploymentDate;
         this.staffSalary = staffSalary;

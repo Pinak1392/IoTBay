@@ -1,66 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app version="3.1"
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/
-                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsds">
-    
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/                              http://java.sun.com/xml/ns/javaee/web-app_3_0.xsds">
     <servlet>
-        
-        <servlet-name>ConnServlet</servlet-name> 
-            
-        <servlet-class>controller.ConnServlet </servlet-class>
-        
-        <load-on-startup>0</load-on-startup>
-        
-    </servlet>
-    
-    <servlet-mapping>
-        
         <servlet-name>ConnServlet</servlet-name>
-        
+        <servlet-class>controller.ConnServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
-        
     </servlet-mapping>
-    
     <servlet>
-
         <servlet-name> LoginServelet </servlet-name>
-
         <servlet-class> controller.LoginServelet </servlet-class>
-
         <load-on-startup> 0 </load-on-startup>
-
-     </servlet>
-
+    </servlet>
     <servlet-mapping>
-
         <servlet-name> LoginServelet </servlet-name>
-
         <url-pattern> /LoginServelet </url-pattern>
-
-     </servlet-mapping>
-     
-     <servlet>
-
+    </servlet-mapping>
+    <servlet>
         <servlet-name> RegisterServlett </servlet-name>
-
         <servlet-class> controller.RegisterServlett </servlet-class>
-
         <load-on-startup> 0 </load-on-startup>
-
-     </servlet>
-
+    </servlet>
     <servlet-mapping>
-
         <servlet-name> RegisterServlett </servlet-name>
-
         <url-pattern> /RegisterServlett </url-pattern>
-
-     </servlet-mapping>
-     
-     <servlet>
+    </servlet-mapping>
+    <servlet>
 
         <servlet-name> LogoutServlet </servlet-name>
 
@@ -77,8 +44,7 @@
         <url-pattern> /LogoutServlet </url-pattern>
 
      </servlet-mapping>
-     
-     <servlet>
+    <servlet>
 
         <servlet-name> UpdateServlet </servlet-name>
 
@@ -96,109 +62,103 @@
 
      </servlet-mapping>
      
+     <servlet>
+
+        <servlet-name> LogController </servlet-name>
+
+        <servlet-class> controller.LogController </servlet-class>
+
+        <load-on-startup> 0 </load-on-startup>
+
+     </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name> LogController </servlet-name>
+
+        <url-pattern> /LogController </url-pattern>
+
+     </servlet-mapping>
     <!-- Staff Servlets Below (Benz) -->
-    
     <servlet>
         <servlet-name>StaffLoginServlet</servlet-name>
         <servlet-class>controller.staffinfo.StaffLoginServlet </servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
-    
     <servlet>
         <servlet-name>StaffCancelServlet</servlet-name>
         <servlet-class>controller.staffinfo.StaffCancelServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>StaffLogoutServlet</servlet-name>
         <servlet-class>controller.staffinfo.StaffLogoutServlet</servlet-class>
     </servlet>
-    
     <servlet>
-        <servlet-name>AdminMenuServlet</servlet-name>
-        <servlet-class>controller.staffinfo.AdminMenuServlet</servlet-class>
+        <servlet-name>StaffListServlet</servlet-name>
+        <servlet-class>controller.staffinfo.StaffListServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>DeleteStaffServlet</servlet-name>
         <servlet-class>controller.staffinfo.DeleteStaffServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>StaffMenuServlet</servlet-name>
         <servlet-class>controller.staffinfo.StaffMenuServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>StaffInfoServlet</servlet-name>
         <servlet-class>controller.staffinfo.StaffInfoServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>CreateStaffServlet</servlet-name>
         <servlet-class>controller.staffinfo.CreateStaffServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>UpdateStaffServlet</servlet-name>
         <servlet-class>controller.staffinfo.UpdateStaffServlet</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>StaffLoginServlet</servlet-name>
         <url-pattern>/StaffInfo/StaffLoginServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>StaffCancelServlet</servlet-name>
         <url-pattern>/StaffInfo/StaffCancelServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>StaffLogoutServlet</servlet-name>
         <url-pattern>/StaffInfo/StaffLogoutServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
-        <servlet-name>AdminMenuServlet</servlet-name>
-        <url-pattern>/StaffInfo/AdminMenuServlet</url-pattern>
+        <servlet-name>StaffListServlet</servlet-name>
+        <url-pattern>/StaffInfo/StaffListServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>DeleteStaffServlet</servlet-name>
         <url-pattern>/StaffInfo/DeleteStaffServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>StaffMenuServlet</servlet-name>
         <url-pattern>/StaffInfo/StaffMenuServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>StaffInfoServlet</servlet-name>
         <url-pattern>/StaffInfo/StaffInfoServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>CreateStaffServlet</servlet-name>
         <url-pattern>/StaffInfo/CreateStaffServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>UpdateStaffServlet</servlet-name>
         <url-pattern>/StaffInfo/UpdateStaffServlet</url-pattern>
     </servlet-mapping>
-     
     <!-- Staff Servlets Above (Benz)  -->
-
     <session-config>
-
         <session-timeout>
 
             30
 
         </session-timeout>
-
-   </session-config>
-
+    </session-config>
 </web-app>

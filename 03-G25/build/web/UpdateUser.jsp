@@ -42,6 +42,11 @@
 
             <input type="submit" value="Update">
         </form>
+            
+         <form method="POST" action="UpdateServlet">
+            <input type="hidden" id="delete" name="delete" value="delete">
+            <input type="submit" value="Delete">
+        </form>
         
         <style>
             form>input{

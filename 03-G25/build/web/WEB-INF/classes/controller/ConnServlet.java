@@ -71,16 +71,15 @@ package controller;
            try {
 
                manager = new StaffInfoManager(conn);
+               
 
            } catch (SQLException ex) {
 
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
 
-           }
-
-           //export the DB manager to the view-session (JSPs)
-
-           session.setAttribute("StaffInfoManager", manager);           
+           }  
+           
+           session.setAttribute("staffInfoManager", manager);
 
        }   
 
