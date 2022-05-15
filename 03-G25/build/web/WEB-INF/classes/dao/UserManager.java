@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import model.Log;
 import model.User;
 
 /**
@@ -39,6 +40,7 @@ public class UserManager {
        while(rs.next()){
            String customerEmail = rs.getString(5);
            if(customerEmail.equals(email)){
+               String uid = rs.getString(1);
                String customerFirstName = rs.getString(2);
                String customerLastName = rs.getString(3);
                String customerPassword = rs.getString(4);
@@ -53,18 +55,7 @@ public class UserManager {
                }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                createLog(uid,"Login");
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
-               createLog(uid,"Login");
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
-               createLog(uid,"Login");
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
                return new User(customerFirstName, customerLastName, customerPassword, customerEmail, customerPhoneNo, customerDOB, Boolean.parseBoolean(customerIsCustomer), true);
            }
        }
@@ -75,33 +66,13 @@ public class UserManager {
     public void createLog(String uid, String log) throws SQLException, Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
-<<<<<<< HEAD
-        String insert = "INSERT INTO USERS(USERID,TIME_OF_ACTION,ACTIONDESC)";
-=======
         String insert = "INSERT INTO ULOGS(ULOGSID,TIME_OF_ACTION,ACTIONDESC)";
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
         String values = "VALUES("+uid+",'"+dtf.format(now)+"','Logged in')";
 
         st.executeUpdate(insert + values); 
     }
 
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public void deactivateUser(String email) throws SQLException, Exception {       
-       String fetch = "select * from USERS where EMAIL = '" + email + "'";
-=======
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
     public ArrayList<Log> viewLogs(String email, String date) throws SQLException, Exception {       
        String fetch = "select * from USERS where EMAIL = '" + email + "'";
        ResultSet rs = st.executeQuery(fetch);
@@ -140,18 +111,6 @@ public class UserManager {
                if(datetime.contains(date)){
                    logs.add(new Log(datetime,action));
                }
-<<<<<<< HEAD
-<<<<<<< HEAD
-           }
-       }
-
-       return logs;
-=======
-           }
-       }
-
-       return logs;
-=======
            }
        }
 
@@ -192,7 +151,6 @@ public class UserManager {
         st.executeUpdate(insert + values);
         return new User(fName, lName, password, email, phoneNo, dob, isCustomer, false);
         // By default the added user is not active unless logged in. 
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
     }
     
     //Add a user-data into the database   
@@ -203,7 +161,7 @@ public class UserManager {
        while(rs.next()){
            String customerEmail = rs.getString(5);
            if(customerEmail.equals(email)){
-               String uID = rs.getString(1);
+               String uid = rs.getString(1);
                String customerFirstName = rs.getString(2);
                String customerLastName = rs.getString(3);
                String customerPassword = rs.getString(4);
@@ -211,114 +169,13 @@ public class UserManager {
                String customerDOB = rs.getString(7);
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
-<<<<<<< HEAD
-
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
-               createLog(uID,"Logout");
-               return;
-           }
-       }
-
-       throw new Exception("Error: User not found");
-    }
-
-    //Add a user-data into the database   
-    public User addUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
-
-        String insert = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, PASSWORD, EMAIL, PHONENO, DATE_OF_BIRTH, ISCUSTOMER, ACTIVE)";
-        String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', '"+phoneNo+"', '"+dob+"', '"+isCustomer+"', 'false')";
-
-        st.executeUpdate(insert + values);
-        return new User(fName, lName, password, email, phoneNo, dob, isCustomer, false);
-        // By default the added user is not active unless logged in. 
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
                
                String sql = "delete from USERS where USERID = " + uid;
                st.executeUpdate(sql);
                return;
            }
        }     
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
     }
-    
-    //Add a user-data into the database   
-    public void delUser(String email) throws SQLException{
-        String fetch = "select * from USERS where EMAIL = '" + email + "'";
-       ResultSet rs = st.executeQuery(fetch);
-
-       while(rs.next()){
-           String customerEmail = rs.getString(5);
-           if(customerEmail.equals(email)){
-               String uID = rs.getString(1);
-               String customerFirstName = rs.getString(2);
-               String customerLastName = rs.getString(3);
-               String customerPassword = rs.getString(4);
-               String customerPhoneNo = rs.getString(6);
-               String customerDOB = rs.getString(7);
-               String customerIsCustomer = rs.getString(8);
-               String customerActive = rs.getString(9);
-<<<<<<< HEAD
-
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
-               createLog(uID,"Logout");
-               return;
-           }
-       }
-
-       throw new Exception("Error: User not found");
-    }
-
-    //Add a user-data into the database   
-    public User addUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
-
-        String insert = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, PASSWORD, EMAIL, PHONENO, DATE_OF_BIRTH, ISCUSTOMER, ACTIVE)";
-        String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', '"+phoneNo+"', '"+dob+"', '"+isCustomer+"', 'false')";
-
-        st.executeUpdate(insert + values);
-        return new User(fName, lName, password, email, phoneNo, dob, isCustomer, false);
-        // By default the added user is not active unless logged in. 
-=======
-               
-               String sql = "delete from USERS where USERID = " + uid;
-               st.executeUpdate(sql);
-               return;
-           }
-       }     
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-    }
-    
-    //Add a user-data into the database   
-    public void delUser(String email) throws SQLException{
-        String fetch = "select * from USERS where EMAIL = '" + email + "'";
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-       ResultSet rs = st.executeQuery(fetch);
-
-       while(rs.next()){
-           String customerEmail = rs.getString(5);
-           if(customerEmail.equals(email)){
-               String uID = rs.getString(1);
-               String customerFirstName = rs.getString(2);
-               String customerLastName = rs.getString(3);
-               String customerPassword = rs.getString(4);
-               String customerPhoneNo = rs.getString(6);
-               String customerDOB = rs.getString(7);
-               String customerIsCustomer = rs.getString(8);
-               String customerActive = rs.getString(9);
-<<<<<<< HEAD
-
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");               
-=======
-               
-               String sql = "delete from USERS where USERID = " + uid;
-               st.executeUpdate(sql);
-               return;
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-           }
-       }     
-    }
-<<<<<<< HEAD
-=======
     
     public User updateUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException, Exception{                   //code for add-operation       
         
@@ -347,27 +204,7 @@ public class UserManager {
        
        throw new Exception("User not found");
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
 
 }
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29

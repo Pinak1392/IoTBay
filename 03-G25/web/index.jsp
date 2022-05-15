@@ -59,8 +59,6 @@
                           
                           <a href="StaffInfo/StaffLogin.jsp" class="btn btn-light text-dark ms-2"> Staff Login </a>
                           <a href="Catalogue.jsp" class="btn btn-light text-dark ms-2"> Catalogue </a>
-
-                          <a href="Catalogue.jsp" class="btn btn-light text-dark ms-2"> Catalogue </a>
                         <a href="DeviceCatalogue.jsp" class="btn btn-light text-dark ms-2"> Device Catalogue </a>
                     </div>
                 </div>

@@ -163,19 +163,6 @@ public class UpdateServlet extends HttpServlet {
             addErr.add("Password requires an uppercase letter, special character, a number and must be atleast 8 characters long");
         }
         
-<<<<<<< HEAD
-//        if(!invalid){
-//            try{
-//                return manager.updateUser(fName, lName, password, email, phoneNo, dob, isCustomer);
-//            }
-//            catch(SQLException e){
-//                Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, e);
-//                addErr.add("Error updating database");
-//                session.setAttribute("errors",addErr);
-//                throw new Exception("Error updating database");
-//            }
-//        }
-=======
         if(!invalid){
             try{
                 return manager.updateUser(fName, lName, password, email, phoneNo, dob, isCustomer);
@@ -187,13 +174,6 @@ public class UpdateServlet extends HttpServlet {
                 throw new Exception("Error updating database");
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
-=======
->>>>>>> 2846d5849f0ef9a056656766db4a6358743a7a29
 //        
         session.setAttribute("errors",addErr);
         throw new Exception("Fields have incorrect information");
