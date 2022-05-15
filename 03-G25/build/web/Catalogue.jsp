@@ -51,7 +51,7 @@
         <p align="center">Your total is $<%= Item.CalculateTotal()%></p>
         <p align="center">Total Items: <%= Item.CartSize()%></p>
         
-        <div class="items">
+        <div class="items" align="center">
             <table width="900px">
                 <tr class="border_bottom">
                     <td align="center">#<%= c.get(0).id%></td>
@@ -99,7 +99,7 @@
                 </tr>
             </table>
         </div>
-        <form method="POST" action="Checkout.jsp">
+        <form method="POST" action="Checkout.jsp" align="center">
             <input type="submit" value="Checkout">
         </form>
                     

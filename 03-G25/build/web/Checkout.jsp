@@ -26,6 +26,7 @@
         <%int itemNo = (request.getParameter("itemNo") == null) ? -1 : Integer.parseInt(request.getParameter("itemNo"));%>
         <%String clear = request.getParameter("clear");%>
         
+        <div align="center">
         <table width="900px">
         <%List<Item> c = Item.GetCart();
         if (clear != null) {
@@ -67,11 +68,11 @@
         </tr>
         <tr>
             <td align="center"></td>
-            <form method="POST" action="Purchase.jsp">
+            <form method="POST" action="Purchase.jsp" align="center">
                 <input type="submit" value="Purchase">
             </form></td>
             <td align="center"></td>
-            <form method="POST" action="Checkout.jsp">
+            <form method="POST" action="Checkout.jsp" align="center">
                 <input type="hidden" id="clear" name="clear" value=clear>
                 <input type="submit" value="Clear Cart">
             </form></td>
@@ -81,5 +82,6 @@
         <h1 align="center">Cart is empty.</h1>
         <%}%>
         </table>
+        </div>
     </body>
 </html>
