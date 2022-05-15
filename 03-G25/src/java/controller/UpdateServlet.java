@@ -35,7 +35,7 @@ import model.User;
  *
  * @author limay
  */
-public class RegisterServlett extends HttpServlet {
+public class UpdateServlet extends HttpServlet {
     private DBConnector db;
 
     private UserManager manager;
@@ -80,24 +80,7 @@ public class RegisterServlett extends HttpServlet {
         String password = request.getParameter("password");
         String phoneNo = request.getParameter("phoneNo");
         String DOB = request.getParameter("DOB");
-        String tos = request.getParameter("tos");
 
-        Validator v = new Validator();
-        if(v.checkEmpty(email, password) || v.checkEmpty(fname, lname) || v.checkEmpty(phoneNo, DOB)){
-            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
-            addErr.add("Please fill in all fields");
-            session.setAttribute("errors",addErr);
-            request.getRequestDispatcher("Register.jsp").include(request, response);
-            return;
-        }
-        
-        if(tos == null){
-            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
-            addErr.add("Please accept the terms of service");
-            session.setAttribute("errors",addErr);
-            request.getRequestDispatcher("Register.jsp").include(request, response);
-            return;
-        }
         
         conn = db.openConnection();       
         
@@ -115,10 +98,13 @@ public class RegisterServlett extends HttpServlet {
         session.setAttribute("Umanager", manager);
         
         try{
-            addUser(fname,lname,password,email,phoneNo,DOB,true);
-            request.getRequestDispatcher("Login.jsp").include(request, response);
+            session.setAttribute("user", addUser(fname,lname,password,email,phoneNo,DOB,true));
+            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+            addErr.add("Successfully updated your info");
+            session.setAttribute("errors",addErr);
+            request.getRequestDispatcher("UpdateUser.jsp").include(request, response);
         } catch(Exception e){
-            request.getRequestDispatcher("Register.jsp").include(request, response);
+            request.getRequestDispatcher("UpdateUser.jsp").include(request, response);
         }
     }   
 
@@ -167,13 +153,13 @@ public class RegisterServlett extends HttpServlet {
         
         if(!invalid){
             try{
-                return manager.addUser(fName, lName, password, email, phoneNo, dob, isCustomer);
+                return manager.updateUser(fName, lName, password, email, phoneNo, dob, isCustomer);
             }
             catch(SQLException e){
-                Logger.getLogger(RegisterServlett.class.getName()).log(Level.SEVERE, null, e);
-                addErr.add("The email is already in use");
+                Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, e);
+                addErr.add("Error updating database");
                 session.setAttribute("errors",addErr);
-                throw new Exception("Email is already in use");
+                throw new Exception("Error updating database");
             }
         }
         

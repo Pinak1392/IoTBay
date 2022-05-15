@@ -79,10 +79,8 @@ public class RegisterServlett extends HttpServlet {
         String lname = request.getParameter("lname");
         String password = request.getParameter("password");
         String phoneNo = request.getParameter("phoneNo");
-        String DOB = request.getParameter("dob");
-        System.out.println(DOB);
+        String DOB = request.getParameter("DOB");
         String tos = request.getParameter("tos");
-        System.out.println(tos);
 
         Validator v = new Validator();
         if(v.checkEmpty(email, password) || v.checkEmpty(fname, lname) || v.checkEmpty(phoneNo, DOB)){
@@ -93,9 +91,9 @@ public class RegisterServlett extends HttpServlet {
             return;
         }
         
-        if(tos != "true"){
+        if(tos == null){
             ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
-            addErr.add("Please use a real name");
+            addErr.add("Please accept the terms of service");
             session.setAttribute("errors",addErr);
             request.getRequestDispatcher("Register.jsp").include(request, response);
             return;
@@ -164,11 +162,7 @@ public class RegisterServlett extends HttpServlet {
         
         if(!v.validatePassword(password)){
             invalid = true;
-            addErr.add("Password requires an uppercase letter, special character and a number");
-        }
-        
-        if(password.length() < 8){
-            addErr.add("Password must be 8 or more characters long");
+            addErr.add("Password requires an uppercase letter, special character, a number and must be atleast 8 characters long");
         }
         
         if(!invalid){

@@ -10,7 +10,7 @@ package controller;
         private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
         private String namePattern = "^[A-Z][a-zA-Z ]+[A-Z][a-zA-Z]+$";       
         private String passwordPattern = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}"; 
-        private String phonePattern = "^[0-9]{8}$";
+        private String phonePattern = "^[0-9]{10}$";
         private String salaryPattern = "^([0-9]{4}|[0-9]{5})$";
         private String datePattern = "^\\d{4}-\\d{2}-\\d{2}$";
         private String permissionsPattern = "^[1-4]{1}$";

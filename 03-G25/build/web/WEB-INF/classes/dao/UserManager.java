@@ -39,6 +39,7 @@ public class UserManager {
        while(rs.next()){
            String customerEmail = rs.getString(5);
            if(customerEmail.equals(email)){
+               String uid = rs.getString(1);
                String customerFirstName = rs.getString(2);
                String customerLastName = rs.getString(3);
                String customerPassword = rs.getString(4);
@@ -53,6 +54,7 @@ public class UserManager {
                }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
+               createLog(uid,"User logged in");
                return new User(customerFirstName, customerLastName, customerPassword, customerEmail, customerPhoneNo, customerDOB, Boolean.parseBoolean(customerIsCustomer), true);
            }
        }
@@ -63,8 +65,8 @@ public class UserManager {
     public void createLog(String uid, String log) throws SQLException, Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
-        String insert = "INSERT INTO USERS(USERID,TIME_OF_ACTION,ACTIONDESC)";
-        String values = "VALUES("+uid+",'"+dtf.format(now)+"','Logged in')";
+        String insert = "INSERT INTO ULOGS(ULOGSID,TIME_OF_ACTION,ACTIONDESC)";
+        String values = "VALUES("+uid+",'"+dtf.format(now)+"','"+log+"')";
 
         st.executeUpdate(insert + values); 
     }
@@ -77,7 +79,7 @@ public class UserManager {
        while(rs.next()){
            String customerEmail = rs.getString(5);
            if(customerEmail.equals(email)){
-               String uID = rs.getString(1);
+               String uid = rs.getString(1);
                String customerFirstName = rs.getString(2);
                String customerLastName = rs.getString(3);
                String customerPassword = rs.getString(4);
@@ -85,8 +87,10 @@ public class UserManager {
                String customerDOB = rs.getString(7);
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
-
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");               
+               
+               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
+               createLog(uid,"User logged out");
+               return;
            }
        }
 
@@ -102,6 +106,34 @@ public class UserManager {
         st.executeUpdate(insert + values);
         return new User(fName, lName, password, email, phoneNo, dob, isCustomer, false);
         // By default the added user is not active unless logged in. 
+    }
+    
+    public User updateUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException, Exception{                   //code for add-operation       
+        
+       String fetch = "select * from USERS where EMAIL = '" + email + "'";
+       ResultSet rs = st.executeQuery(fetch);
+
+       while(rs.next()){
+           String customerEmail = rs.getString(5);
+           if(customerEmail.equals(email)){
+               String uid = rs.getString(1);
+               String customerFirstName = rs.getString(2);
+               String customerLastName = rs.getString(3);
+               String customerPassword = rs.getString(4);
+               String customerPhoneNo = rs.getString(6);
+               String customerDOB = rs.getString(7);
+               String customerIsCustomer = rs.getString(8);
+               String customerActive = rs.getString(9);
+               
+            
+               st.executeUpdate("UPDATE USERS SET FIRST_NAME='"+fName+"', LAST_NAME='"+lName+"', PASSWORD='"+password+"', EMAIL='"+email+"', PHONENO="+phoneNo+", DATE_OF_BIRTH='"+dob+"' WHERE EMAIL='"+email+"'");
+               createLog(uid,"User info updated");
+               
+               return new User(fName, lName, password, email, phoneNo, dob, isCustomer, true);
+           }
+       }
+       
+       throw new Exception("User not found");
     }
 
 

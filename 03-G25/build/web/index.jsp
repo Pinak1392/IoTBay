@@ -8,7 +8,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
               rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script type="text/javascript" src="js/script.js"></script>
-        <title>Staff Home Page</title>
+        <title>IoTBay Home Page</title>
     </head> 
     
     <body class="overflow-hidden">
@@ -43,8 +43,9 @@
                           <a href="Register.jsp" class="btn btn-dark ms-2"> Register </a>
 
                         <%} else { %>
-
-                          <a href="Logout.jsp" class="btn btn-dark ms-2"> Logout </a>
+                          <a href="Logs.jsp" class="btn btn-dark ms-2"> Check logs </a>
+                          <a href="UpdateUser.jsp" class="btn btn-dark ms-2"> Update Info </a>
+                          <a href="LogoutServlet" class="btn btn-dark ms-2"> Logout </a>
 
                         <%}%>
 
