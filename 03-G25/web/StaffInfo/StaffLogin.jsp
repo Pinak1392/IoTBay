@@ -16,7 +16,7 @@
         <title>Staff Login Page</title>
     </head> 
     
-    <body onload="startTime()">
+    <body>
         
         <% 
            String emailErr = (String) session.getAttribute("L_emailErr");
@@ -50,7 +50,13 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="StaffCancelServlet" class="btn btn-primary">Cancel</a>
                     </span>
-                    <div class="mt-3 alert alert-danger"><%=(existErr != null ? existErr : "")%></div>
+                    
+                    <% if (existErr != null) { %>
+                        <% if (!existErr.isEmpty()) { %>
+                            <div class="mt-3 alert alert-danger"><%= existErr %></div>
+                        <% } %>
+                    <% } %>
+
                 </div>
                     
             </form>

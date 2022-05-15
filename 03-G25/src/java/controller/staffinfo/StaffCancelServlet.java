@@ -41,7 +41,7 @@ public class StaffCancelServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        request.getRequestDispatcher("StaffIndex.jsp").include(request, response);
+        request.getRequestDispatcher("/index.jsp").include(request, response);
     }
 }
         
