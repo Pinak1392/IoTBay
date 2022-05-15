@@ -23,6 +23,6 @@
         </div>
         <%Item.ClearCart();%>
         
-        <h1>Thank you for your purchase.</h1>
+        <h1 align="center">Thank you for your purchase.</h1>
     </body>
 </html>
