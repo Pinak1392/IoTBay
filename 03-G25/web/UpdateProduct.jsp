@@ -37,7 +37,7 @@
             PreparedStatement stmt = null;
             Connection conn = null;
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-            conn = DriverManager.getConnection(host + "database", "admin1", "admin");
+            conn = DriverManager.getConnection(host + "usersdb", "isduser", "admin");
         %>
         <form action="" method="post">
             <%
