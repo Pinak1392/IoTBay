@@ -49,6 +49,7 @@
                         <%}%>
 
                           <a href="Catalogue.jsp" class="btn btn-dark ms-2"> Catalogue </a>
+                        <a href="DeviceCatalogue.jsp" class="btn btn-dark ms-2"> Device Catalogue </a>
                     </div>
                 </div>
             </div>  
