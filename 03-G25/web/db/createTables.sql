@@ -31,13 +31,13 @@ CREATE TABLE Users (
 
 
 CREATE TABLE ULogs (
-    ULogsID INTEGER NOT NULL,
+    ULogsSurrogate INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
+    ULogsID INTEGER,
     Time_Of_Action VARCHAR(40) NOT NULL,
     ActionDesc VARCHAR(40) NOT NULL,
-    CONSTRAINT PK_ULogs PRIMARY KEY (ULogsID, Time_Of_Action),
-    CONSTRAINT FK_ULogs FOREIGN KEY(ULogsID) REFERENCES Users(UserID)
+    CONSTRAINT PK_ULogs PRIMARY KEY (ULogsSurrogate),
+    CONSTRAINT FK_ULogs FOREIGN KEY(ULogsID) REFERENCES Users(UserID) ON DELETE SET NULL
 );
-
 /* ---------------------------------------------------------------------- */
 /* Add table "Customer"                                                   */
 /* ---------------------------------------------------------------------- */
@@ -53,7 +53,7 @@ CREATE TABLE Customer (
     Suburb VARCHAR(40),
     Country VARCHAR(40),
     CONSTRAINT PK_Customer PRIMARY KEY(CustomerID),
-    CONSTRAINT FK_Customer FOREIGN KEY(CustomerID) REFERENCES Users(UserID)
+    CONSTRAINT FK_Customer FOREIGN KEY(CustomerID) REFERENCES Users(UserID) ON DELETE CASCADE
 );
 
 
@@ -69,7 +69,7 @@ CREATE TABLE Staff (
     Staff_EmploymentDate DATE,
     Permissions VARCHAR(5),
     CONSTRAINT PK_Staff PRIMARY KEY(StaffID),
-    CONSTRAINT FK_Staff FOREIGN KEY(StaffID) REFERENCES Users(UserID)
+    CONSTRAINT FK_Staff FOREIGN KEY(StaffID) REFERENCES Users(UserID) ON DELETE CASCADE
 );
 
 /* ---------------------------------------------------------------------- */
@@ -83,7 +83,7 @@ CREATE TABLE Card (
     CardExpiry VARCHAR(40) NOT NULL,
     CardPin INTEGER NOT NULL,
     CONSTRAINT PK_Card PRIMARY KEY(CardNo),
-    CONSTRAINT FK_Card FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
+    CONSTRAINT FK_Card FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID) ON DELETE CASCADE
 );
 
 /* ---------------------------------------------------------------------- */
@@ -96,7 +96,7 @@ CREATE TABLE Payment (
     Cost NUMERIC(10,2) NOT NULL,
     CardNo NUMERIC(16),
     CONSTRAINT PK_Payment PRIMARY KEY(PaymentID),
-    CONSTRAINT FK_Payment FOREIGN KEY(CardNo) REFERENCES Card(CardNo)
+    CONSTRAINT FK_Payment FOREIGN KEY(CardNo) REFERENCES Card(CardNo) ON DELETE SET NULL
 );
 
 /* ---------------------------------------------------------------------- */
@@ -116,7 +116,7 @@ CREATE TABLE Orders (
     Suburb VARCHAR(40),
     Country VARCHAR(40),
     CONSTRAINT PK_Orders PRIMARY KEY(OrderID),
-    CONSTRAINT FK_Orders1 FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+    CONSTRAINT FK_Orders1 FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID) ON DELETE SET NULL,
     CONSTRAINT FK_Orders2 FOREIGN KEY(PaymentID) REFERENCES Payment(PaymentID)
 );
 

@@ -18,6 +18,14 @@ public class Log {
         this.action = action;
     }
 
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
     
     @Override
     public String toString() {

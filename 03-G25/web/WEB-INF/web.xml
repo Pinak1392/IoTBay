@@ -27,6 +27,58 @@
         <servlet-name> RegisterServlett </servlet-name>
         <url-pattern> /RegisterServlett </url-pattern>
     </servlet-mapping>
+    <servlet>
+
+        <servlet-name> LogoutServlet </servlet-name>
+
+        <servlet-class> controller.LogoutServlet </servlet-class>
+
+        <load-on-startup> 0 </load-on-startup>
+
+     </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name> LogoutServlet </servlet-name>
+
+        <url-pattern> /LogoutServlet </url-pattern>
+
+     </servlet-mapping>
+    <servlet>
+
+        <servlet-name> UpdateServlet </servlet-name>
+
+        <servlet-class> controller.UpdateServlet </servlet-class>
+
+        <load-on-startup> 0 </load-on-startup>
+
+     </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name> UpdateServlet </servlet-name>
+
+        <url-pattern> /UpdateServlet </url-pattern>
+
+     </servlet-mapping>
+     
+     <servlet>
+
+        <servlet-name> LogController </servlet-name>
+
+        <servlet-class> controller.LogController </servlet-class>
+
+        <load-on-startup> 0 </load-on-startup>
+
+     </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name> LogController </servlet-name>
+
+        <url-pattern> /LogController </url-pattern>
+
+     </servlet-mapping>
     <!-- Staff Servlets Below (Benz) -->
     <servlet>
         <servlet-name>StaffLoginServlet</servlet-name>

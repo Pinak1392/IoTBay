@@ -80,6 +80,7 @@ public class UpdateServlet extends HttpServlet {
         String password = request.getParameter("password");
         String phoneNo = request.getParameter("phoneNo");
         String DOB = request.getParameter("DOB");
+        String del = request.getParameter("delete");
 
         
         conn = db.openConnection();       
@@ -96,6 +97,17 @@ public class UpdateServlet extends HttpServlet {
 
         //export the DB manager to the view-session (JSPs)
         session.setAttribute("Umanager", manager);
+        
+        if(del != null){
+            try{
+                manager.delUser(email);
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+            session.setAttribute("user", null);
+            request.getRequestDispatcher("index.jsp").include(request, response);
+            return;
+        }
         
         try{
             session.setAttribute("user", addUser(fname,lname,password,email,phoneNo,DOB,true));
@@ -151,17 +163,17 @@ public class UpdateServlet extends HttpServlet {
             addErr.add("Password requires an uppercase letter, special character, a number and must be atleast 8 characters long");
         }
         
-//        if(!invalid){
-//            try{
-//                return manager.updateUser(fName, lName, password, email, phoneNo, dob, isCustomer);
-//            }
-//            catch(SQLException e){
-//                Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, e);
-//                addErr.add("Error updating database");
-//                session.setAttribute("errors",addErr);
-//                throw new Exception("Error updating database");
-//            }
-//        }
+        if(!invalid){
+            try{
+                return manager.updateUser(fName, lName, password, email, phoneNo, dob, isCustomer);
+            }
+            catch(SQLException e){
+                Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, e);
+                addErr.add("Error updating database");
+                session.setAttribute("errors",addErr);
+                throw new Exception("Error updating database");
+            }
+        }
 //        
         session.setAttribute("errors",addErr);
         throw new Exception("Fields have incorrect information");
