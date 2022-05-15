@@ -32,8 +32,8 @@ public class UserManager {
     }
 
     //Find user by email and password in the database   
-    public User setUser(String email, String password) throws SQLException, Exception {       
-       String fetch = "select * from USERS where EMAIL = '" + email + "' and PASSWORD = " + password;
+    public User setUser(String email, String password) throws SQLException, Exception { 
+       String fetch = "select * from USERS where EMAIL = '" + email + "' and PASSWORD = '" + password + "'";
        ResultSet rs = st.executeQuery(fetch);
 
        while(rs.next()){
@@ -42,6 +42,7 @@ public class UserManager {
                String customerFirstName = rs.getString(2);
                String customerLastName = rs.getString(3);
                String customerPassword = rs.getString(4);
+               System.out.println();
                String customerPhoneNo = rs.getString(6);
                String customerDOB = rs.getString(7);
                String customerIsCustomer = rs.getString(8);
@@ -52,7 +53,7 @@ public class UserManager {
                }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
-               return new User(customerFirstName, customerLastName, customerPassword, customerEmail, Integer.parseInt(customerPhoneNo), customerDOB, Boolean.parseBoolean(customerIsCustomer), true);
+               return new User(customerFirstName, customerLastName, customerPassword, customerEmail, customerPhoneNo, customerDOB, Boolean.parseBoolean(customerIsCustomer), true);
            }
        }
 
@@ -93,10 +94,10 @@ public class UserManager {
     }
 
     //Add a user-data into the database   
-    public User addUser(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
+    public User addUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException{                   //code for add-operation       
 
         String insert = "INSERT INTO USERS(FIRST_NAME, LAST_NAME, PASSWORD, EMAIL, PHONENO, DATE_OF_BIRTH, ISCUSTOMER, ACTIVE)";
-        String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', "+phoneNo+", '"+dob+"', '"+isCustomer+"', 'true')";
+        String values = "VALUES('"+fName+"', '"+lName+"', '"+password+"', '"+email+"', "+phoneNo+", '"+dob+"', '"+isCustomer+"', 'false')";
 
         st.executeUpdate(insert + values);
         return new User(fName, lName, password, email, phoneNo, dob, isCustomer, false);

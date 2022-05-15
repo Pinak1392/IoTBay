@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.*;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.User;
@@ -70,7 +71,36 @@ public class RegisterServlett extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");       
 
         session = request.getSession();
+        
+        session.setAttribute("errors", new ArrayList<String>());
+        
+        String email = request.getParameter("email");
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String password = request.getParameter("password");
+        String phoneNo = request.getParameter("phoneNo");
+        String DOB = request.getParameter("dob");
+        System.out.println(DOB);
+        String tos = request.getParameter("tos");
+        System.out.println(tos);
 
+        Validator v = new Validator();
+        if(v.checkEmpty(email, password) || v.checkEmpty(fname, lname) || v.checkEmpty(phoneNo, DOB)){
+            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+            addErr.add("Please fill in all fields");
+            session.setAttribute("errors",addErr);
+            request.getRequestDispatcher("Register.jsp").include(request, response);
+            return;
+        }
+        
+        if(tos != "true"){
+            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+            addErr.add("Please use a real name");
+            session.setAttribute("errors",addErr);
+            request.getRequestDispatcher("Register.jsp").include(request, response);
+            return;
+        }
+        
         conn = db.openConnection();       
         
         try {
@@ -86,8 +116,12 @@ public class RegisterServlett extends HttpServlet {
         //export the DB manager to the view-session (JSPs)
         session.setAttribute("Umanager", manager);
         
-        response.sendRedirect("Register.jsp");
-
+        try{
+            addUser(fname,lname,password,email,phoneNo,DOB,true);
+            request.getRequestDispatcher("Login.jsp").include(request, response);
+        } catch(Exception e){
+            request.getRequestDispatcher("Register.jsp").include(request, response);
+        }
     }   
 
 
@@ -96,7 +130,6 @@ public class RegisterServlett extends HttpServlet {
      public void destroy() {
 
         try {
-            session = null;
             db.closeConnection();
 
         } catch (SQLException ex) {
@@ -107,37 +140,35 @@ public class RegisterServlett extends HttpServlet {
 
     }
     
-     public boolean validate(String pattern, String input) {
-        Pattern regEx = Pattern.compile(pattern);
-        Matcher match = regEx.matcher(input);
-        return match.matches();
-    }
     
-    public User addUser(String fName, String lName, String password, String email, int phoneNo, String dob, boolean isCustomer){
+    public User addUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws Exception{
+        
+        Validator v = new Validator();
         Boolean invalid = false;
+        ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
         
-        if(!validate("^[A-Z][a-zA-Z ]+[A-Z][a-zA-Z]+$",fName + ' ' + lName)){
+        if(!v.validateName(fName,lName)){
             invalid = true;
-            ErrorLogger.addErr("Please use a real name");
+            addErr.add("Please use a real name");
         }
         
-        if(!validate("^[0-9]{10}$",Integer.toString(phoneNo))){
+        if(!v.validatePhone(phoneNo)){
             invalid = true;
-            ErrorLogger.addErr("Phone number does not fit required length");
+            addErr.add("Phone number does not fit required length");
         }
         
-        if(!validate("([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2}))",email)){
+        if(!v.validateEmail(email)){
             invalid = true;
-            ErrorLogger.addErr("Please use a real name");
+            addErr.add("Please use a real name");
         }
         
-        if(!validate("((.[A-Z].[^\\w\\s].[0-9].)|(.[A-Z].[0-9].[^\\w\\s].)|(.[0-9].[A-Z].[^\\w\\s].)|(.[0-9].[^\\w\\s].[A-Z].)|(.[^\\w\\s].[A-Z].[0-9].)|(.[^\\w\\s].[0-9].[A-Z].))",password)){
+        if(!v.validatePassword(password)){
             invalid = true;
-            ErrorLogger.addErr("Password requires an uppercase letter, special character and a number");
+            addErr.add("Password requires an uppercase letter, special character and a number");
         }
         
         if(password.length() < 8){
-            ErrorLogger.addErr("Password must be 8 or more characters long");
+            addErr.add("Password must be 8 or more characters long");
         }
         
         if(!invalid){
@@ -145,12 +176,15 @@ public class RegisterServlett extends HttpServlet {
                 return manager.addUser(fName, lName, password, email, phoneNo, dob, isCustomer);
             }
             catch(SQLException e){
-                Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, e);
-                ErrorLogger.addErr("The email is already in use");
+                Logger.getLogger(RegisterServlett.class.getName()).log(Level.SEVERE, null, e);
+                addErr.add("The email is already in use");
+                session.setAttribute("errors",addErr);
+                throw new Exception("Email is already in use");
             }
         }
         
-        return null;
+        session.setAttribute("errors",addErr);
+        throw new Exception("Fields have incorrect information");
     }
 
 }

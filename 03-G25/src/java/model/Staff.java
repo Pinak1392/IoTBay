@@ -11,7 +11,7 @@ public class Staff extends User {
 
     // used by DAO and only DAO
     public Staff(String email, String fname, String lname, 
-                String password, int phoneNo, String DOB, Boolean isCustomer, Boolean isActive,
+                String password, String phoneNo, String DOB, Boolean isCustomer, Boolean isActive,
                 String staffPosition, int staffSalary, String staffEmploymentDate,
                 String permissions) {
 

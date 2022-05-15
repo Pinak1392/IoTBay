@@ -9,7 +9,7 @@ public class User {
     private String fname;
     private String lname;
     private String password;
-    private int phoneNo;
+    private String phoneNo;
     private String DOB;
     private Boolean isCustomer;
     private Boolean isActive;
@@ -17,7 +17,7 @@ public class User {
     // cart shouldn't be in User, should be in Customer model. 
     // Customer model has additional fields: address, suburb...
     
-    public User(String fname, String lname, String password, String email, int phoneNo, String DOB, Boolean isCustomer, Boolean isActive) {
+    public User(String fname, String lname, String password, String email, String phoneNo, String DOB, Boolean isCustomer, Boolean isActive) {
         this.email = email;
         this.fname = fname;
         this.lname = lname;
@@ -48,7 +48,7 @@ public class User {
         return lname;
     }
 
-    public int getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
@@ -72,7 +72,7 @@ public class User {
         this.password = password;
     }
 
-    public void setPhoneNo(int phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
 

@@ -1,5 +1,4 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="controller.ErrorLogger"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,17 +10,22 @@
         <a href="index.jsp">Homepage</a>
         <a href="Login.jsp">Login</a>
         
-        <div id="errorDiv">
+        <div>
             <%
-              ArrayList<String> errors = ErrorLogger.getErrs();
-              for(int i = 0; i < errors.size(); i++){ %>
-              <p><%= errors.get(i) %></p>
-            <% } %>
+                if (null != session.getAttribute("errors")){
+                    ArrayList<String> errors = (ArrayList<String>)session.getAttribute("errors");
+                    for(int i = 0; i < errors.size(); i++){ %>
+                        <p> <%= errors.get(i) %> </p>
+            <%    
+                    }
+                }
+                session.setAttribute("errors", new ArrayList<String>());
+            %>
         </div>
         
         <h1>Register</h1>
         <p>Please enter information for all fields</p>
-        <form method="POST" action="index.jsp">
+        <form method="POST" action="RegisterServlett">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" class="input"> <br>
             <label for="fname">First Name:</label>
@@ -37,7 +41,6 @@
             <input type="date" class="input" id="DOB" name="DOB"><br>
             <label for="tos">Accept terms of service?</label>
             <input type="checkbox" id="tos" name="tos" value="True"> <br>
-            <input type="hidden" id="form" name="form" value="register">
             <input type="submit" value="Register">
         </form>
         
@@ -49,16 +52,6 @@
             
             .input{
                 border-radius: 5px;
-            }
-            
-            .input:valid{
-                border-color: limegreen;
-                outline-color: limegreen;
-            }
-            
-            .input:invalid{
-                border-color: red;
-                outline-color: red;
             }
         </style>
     </body>

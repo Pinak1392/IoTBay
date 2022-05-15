@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.*;
+import java.util.ArrayList;
 
 import model.User;
 
@@ -48,14 +49,14 @@ public class LoginServelet extends HttpServlet {
     public void init() {
 
         try {
-
+            
             db = new DBConnector();
 
         } catch (ClassNotFoundException | SQLException ex) {
 
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginServelet.class.getName()).log(Level.SEVERE, null, ex);
 
-        }      
+        }
 
     }
 
@@ -67,6 +68,7 @@ public class LoginServelet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");       
 
         session = request.getSession();
+        session.setAttribute("errors", new ArrayList<String>());
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -79,7 +81,7 @@ public class LoginServelet extends HttpServlet {
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginServelet.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -88,10 +90,11 @@ public class LoginServelet extends HttpServlet {
         session.setAttribute("Umanager", manager);
         
         try{
+            session.setAttribute("user",setUser(email,password));
             
-            response.sendRedirect("index.jsp");
+            request.getRequestDispatcher("index.jsp").include(request, response);
         } catch (Exception e){
-            response.sendRedirect("Login.jsp");
+            request.getRequestDispatcher("Login.jsp").include(request, response);
         }
 
     }   
@@ -102,30 +105,42 @@ public class LoginServelet extends HttpServlet {
      public void destroy() {
 
         try {
-            session = null;
             db.closeConnection();
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginServelet.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
     }
     
-    public User setUser(String email, String password){
+    public User setUser(String email, String password) throws Exception{
         try{
+            Validator v = new Validator();
             
+            if(v.checkEmpty(email, password)){
+                ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+                addErr.add("Please fill in the required fields");
+                session.setAttribute("errors",addErr);
+            }
             return manager.setUser(email, password);
             
         } catch(Exception e){
             if(e instanceof SQLException){
-                Logger.getLogger(UserManagementController.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(LoginServelet.class.getName()).log(Level.SEVERE, null, e);
+                ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+                addErr.add("Incorrect credentials");
+                session.setAttribute("errors",addErr);
+                throw new Exception("Incorrect credentials");
             }
             
-            ErrorLogger.addErr(e.getMessage());
+            ArrayList<String> addErr = (ArrayList<String>)session.getAttribute("errors");
+            System.out.println(e);
+            addErr.add(e.getMessage());
+            session.setAttribute("errors",addErr);
+            throw e;
         }
-        return null;
     }
 
 }

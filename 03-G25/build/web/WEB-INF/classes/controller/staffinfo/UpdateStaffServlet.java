@@ -97,7 +97,7 @@ public class UpdateStaffServlet extends HttpServlet {
         }
         else {
             try {
-                manager.updateStaff(oldEmail, newEmail, fname, lname, password, Integer.parseInt(phoneNo), DOB, pos, Integer.parseInt(salary), empdate, perms);
+                manager.updateStaff(oldEmail, newEmail, fname, lname, password, phoneNo, DOB, pos, Integer.parseInt(salary), empdate, perms);
                 request.getRequestDispatcher("UpdateStaff.jsp").include(request, response);
             } catch (Exception e) {
                 Logger.getLogger(UpdateStaffServlet.class.getName()).log(Level.SEVERE, null, e);

@@ -93,7 +93,7 @@ public class CreateStaffServlet extends HttpServlet {
         }
         else {
             try {
-                staff = manager.addStaff(email, fname, lname, password, Integer.parseInt(phoneNo), DOB, pos, Integer.parseInt(salary), empdate, perms);
+                staff = manager.addStaff(email, fname, lname, password, phoneNo, DOB, pos, Integer.parseInt(salary), empdate, perms);
                 request.getRequestDispatcher("CreateStaff.jsp").include(request, response);
             } catch (Exception e) {
                 Logger.getLogger(CreateStaffServlet.class.getName()).log(Level.SEVERE, null, e);

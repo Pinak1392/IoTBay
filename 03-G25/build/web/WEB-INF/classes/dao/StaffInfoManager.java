@@ -35,7 +35,7 @@ public class StaffInfoManager {
             if (staffEmail.equals(email) && pass.equals(password)) {
                 String fName = rs.getString(2);
                 String lName = rs.getString(3);
-                int phoneNo = Integer.parseInt(rs.getString(6));
+                String phoneNo = rs.getString(6);
                 String DOB = rs.getString(7);
                 String isCustomer = rs.getString(8);
                 String isActive = rs.getString(9);
@@ -77,7 +77,7 @@ public class StaffInfoManager {
     
     // add a Staff, System Admin does this. Can view the created staff record after creation.  
     public Staff addStaff(String email, String fname, String lname, 
-                String password, int phoneNo, String DOB, 
+                String password, String phoneNo, String DOB, 
                 String staffPosition, int staffSalary, String staffEmploymentDate,
                 String permissions) throws SQLException {
         
@@ -98,7 +98,7 @@ public class StaffInfoManager {
     
     // Update Staff Info, System Admin does this
     public void updateStaff(String oldEmail, String newEmail, String fname, String lname, 
-                String password, int phoneNo, String DOB,
+                String password, String phoneNo, String DOB,
                 String staffPosition, int staffSalary, String staffEmploymentDate,
                 String permissions) throws SQLException, Exception {
         
@@ -150,7 +150,7 @@ public class StaffInfoManager {
             String pass = rs.getString(4);
             String fName = rs.getString(2);
             String lName = rs.getString(3);
-            int phoneNo = Integer.parseInt(rs.getString(6));
+            String phoneNo = rs.getString(6);
             String DOB = rs.getString(7);
             String isCustomer = rs.getString(8);
             String isActive = rs.getString(9);
@@ -181,7 +181,7 @@ public class StaffInfoManager {
             String pass = rs.getString(4);
             String fName = rs.getString(2);
             String lName = rs.getString(3);
-            int phoneNo = Integer.parseInt(rs.getString(6));
+            String phoneNo = rs.getString(6);
             String DOB = rs.getString(7);
             String isCustomer = rs.getString(8);
             String isActive = rs.getString(9);
