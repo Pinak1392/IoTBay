@@ -195,7 +195,7 @@ public class UserManager {
                String customerActive = rs.getString(9);
                
             
-               st.executeUpdate("UPDATE USERS SET FIRST_NAME='"+fName+"', LAST_NAME='"+lName+"', PASSWORD='"+password+"', EMAIL='"+email+"', PHONENO='"+phoneNo+"', DATE_OF_BIRTH='"+dob+"' WHERE EMAIL='"+email+"'");
+               st.executeUpdate("UPDATE USERS SET FIRST_NAME='"+fName+"', LAST_NAME='"+lName+"', PASSWORD='"+password+"', EMAIL='"+email+"', PHONENO='"+phoneNo+"', DATE_OF_BIRTH='"+dob+"' WHERE USERID="+uid);
                createLog(uid,"User info updated");
                
                return new User(fName, lName, password, email, phoneNo, dob, isCustomer, true);
