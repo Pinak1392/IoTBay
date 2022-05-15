@@ -14,7 +14,7 @@ CREATE TABLE Users (
     Last_Name VARCHAR(40) NOT NULL,
     Password VARCHAR(40) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
-    PhoneNo NUMERIC(10) NOT NULL,
+    PhoneNo VARCHAR(100) NOT NULL,
     Date_Of_Birth DATE NOT NULL,
     isCustomer BOOLEAN NOT NULL,
     Active BOOLEAN NOT NULL,

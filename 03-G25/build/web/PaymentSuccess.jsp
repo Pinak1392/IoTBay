@@ -23,7 +23,10 @@
                 </nav>
             </div>
         </header>
-        <h1>Payment Successful!</h1>
+                <h1>Payment Successful! Click here to return to the catalogue page</h1>
+        <form method="POST" action="DeviceCatalogueSearch.jsp">
+            <input type="submit" value="Continue" autocomplete="on">
+        </form>
         <style>
             body {
                 margin: 0;

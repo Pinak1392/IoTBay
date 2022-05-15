@@ -34,16 +34,28 @@ package controller.staffinfo;
     import model.*;
 
 
-// UpdateStaffServlet used for updating a staff
+// LogoutStaff
 public class StaffLogoutServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        session.invalidate();
-        request.getRequestDispatcher("login.jsp").include(request, response);
+            HttpSession session = request.getSession();
+            
+            StaffInfoManager manager = (StaffInfoManager) session.getAttribute("staffInfoManager");
+
+            Staff admin = (Staff) session.getAttribute("admin");
+            
+            try {
+                manager.deactivateStaff(admin.getEmail());
+            } catch (Exception e) {
+                Logger.getLogger(StaffLogoutServlet.class.getName()).log(Level.SEVERE, null, e);
+            }
+
+            session.invalidate();
+
+            request.getRequestDispatcher("StaffLogin.jsp").include(request, response);
     }
 }
         
