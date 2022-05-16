@@ -73,7 +73,7 @@
                           method that takes parameters of string type 
                           connection url, user name and password to connect 
                             to database. */
-                        connection = DriverManager.getConnection(connectionURL + "database", "admin1", "admin");
+                        connection = DriverManager.getConnection(connectionURL + "usersdb", "isduser", "admin");
                         // sql query to insert values in the secified table.
 
                         String queryString = "INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION) VALUES(?, ?, ?, ?, ?)";
