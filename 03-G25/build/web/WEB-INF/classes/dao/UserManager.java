@@ -50,9 +50,9 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
 
-               if(Boolean.parseBoolean(customerActive)){
-                   throw new Exception("Error: User is already logged on elsewhere");
-               }
+//               if(Boolean.parseBoolean(customerActive)){
+//                   throw new Exception("Error: User is already logged on elsewhere");
+//               }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
                createLog(uid,"Login");
@@ -89,7 +89,6 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
                
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
                return getLogs(uid,date);
            }
        }

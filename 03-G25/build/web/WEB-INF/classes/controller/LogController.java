@@ -106,7 +106,7 @@ public class LogController extends HttpServlet {
 
         session = request.getSession();
         
-        String date = request.getParameter("date");
+        String date = request.getParameter("Date");
         session.setAttribute("date", date);
         User u = (User)session.getAttribute("user");
         
