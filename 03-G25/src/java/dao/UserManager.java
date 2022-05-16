@@ -134,7 +134,6 @@ public class UserManager {
     //Add a user-data into the database   
     public String findUser(String email) throws SQLException{
        String fetch = "select * from USERS where EMAIL = '" + email + "'";
-       System.out.println(email);
        ResultSet rs = st.executeQuery(fetch);
 
        while(rs.next()){
@@ -148,8 +147,6 @@ public class UserManager {
                String customerDOB = rs.getString(7);
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
-               
-               System.out.println(uid);
                
                
                return uid;
