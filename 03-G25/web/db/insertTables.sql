@@ -83,29 +83,29 @@ VALUES
 (39, 84, 'Missi', 2794, 'NSW', 'Schogarden', 'Australia');
 
 /*Product Table*/
-INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION, ARCHIVED)
+INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION)
 VALUES
-(1, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor', 0),
-(2, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor', 0),
-(3, 'VCNL4010 Proximity/Light sensor', 7, 14.74, 'sensor', 0),
-(4, 'DFRobot SEN0312 Proximity Sensor', 10, 23.99, 'sensor', 0),
-(5, 'TankMate R3 Tank Level Sensor', 12, 350.00, 'sensor', 0),
-(6, 'Optomax Digital Liquid Level Sensor', 8, 43.99, 'sensor', 0),
-(7, 'Autonics Inductive Proximity Sensor', 9, 40.00, 'sensor', 0),
-(8, 'Spring Return Pneumatic Actuator', 5, 150.00, 'actuator', 0),
-(9, 'VEVOR 20 Stroke Linear Actuator', 9, 52.99, 'actuator', 0),
-(10, 'ACTUATOR - ELECTRIC 24DC X F05', 2, 1300.00, 'actuator', 0),
-(11, 'Schmersal Magnetic Actuator, Plastic', 21, 31.99, 'actuator', 0),
-(12, 'Hamlin 57135-000 Magnetic Actuator', 10, 17.50, 'actuator', 0),
-(13, '230v Electric Thermal Actuator', 23, 10.33, 'actuator', 0),
-(14, 'TG451 Industrial Cellular', 5, 399.00, 'gateway', 0),
-(15, 'F-DPU100', 2, 699.00, 'gateway', 0),
-(16, 'TG452', 9, 530.00, 'gateway', 0),
-(17, 'TY511', 2, 499.00, 'gateway', 0),
-(18, 'Advantech UTX-3117FS-S6A1N', 5, 1490.00, 'gateway', 0),
-(19, 'Lantronix SGX 5150', 3, 688.50, 'gateway', 0),
-(20, 'Ig902', 9, 1000.00, 'gateway', 0),
-(21, 'GL-S10', 9, 36.35, 'gateway', 0);
+(1, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor'),
+(2, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor'),
+(3, 'VCNL4010 Proximity/Light sensor', 7, 14.74, 'sensor'),
+(4, 'DFRobot SEN0312 Proximity Sensor', 10, 23.99, 'sensor'),
+(5, 'TankMate R3 Tank Level Sensor', 12, 350.00, 'sensor'),
+(6, 'Optomax Digital Liquid Level Sensor', 8, 43.99, 'sensor'),
+(7, 'Autonics Inductive Proximity Sensor', 9, 40.00, 'sensor'),
+(8, 'Spring Return Pneumatic Actuator', 5, 150.00, 'actuator'),
+(9, 'VEVOR 20 Stroke Linear Actuator', 9, 52.99, 'actuator'),
+(10, 'ACTUATOR - ELECTRIC 24DC X F05', 2, 1300.00, 'actuator'),
+(11, 'Schmersal Magnetic Actuator, Plastic', 21, 31.99, 'actuator'),
+(12, 'Hamlin 57135-000 Magnetic Actuator', 10, 17.50, 'actuator'),
+(13, '230v Electric Thermal Actuator', 23, 10.33, 'actuator'),
+(14, 'TG451 Industrial Cellular', 5, 399.00, 'gateway'),
+(15, 'F-DPU100', 2, 699.00, 'gateway'),
+(16, 'TG452', 9, 530.00, 'gateway'),
+(17, 'TY511', 2, 499.00, 'gateway'),
+(18, 'Advantech UTX-3117FS-S6A1N', 5, 1490.00, 'gateway'),
+(19, 'Lantronix SGX 5150', 3, 688.50, 'gateway'),
+(20, 'Ig902', 9, 1000.00, 'gateway'),
+(21, 'GL-S10', 9, 36.35, 'gateway');
 
  /* Card TABLE */
 INSERT INTO Card(CardNo, CustomerID, CardName, CardExpiry, CardPin)
