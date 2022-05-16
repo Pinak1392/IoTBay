@@ -38,7 +38,7 @@
                 Statement statement = null;
                 ResultSet rs = null;
                 Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-                connection = DriverManager.getConnection(connectionURL + "database", "admin1", "admin");
+                connection = DriverManager.getConnection(connectionURL + "usersdb", "isduser", "admin");
                 statement = connection.createStatement();
                 String query = request.getParameter("q");
                 String QueryString;
