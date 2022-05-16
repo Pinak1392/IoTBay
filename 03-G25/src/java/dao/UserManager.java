@@ -67,7 +67,7 @@ public class UserManager {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
         String insert = "INSERT INTO ULOGS(ULOGSID,TIME_OF_ACTION,ACTIONDESC)";
-        String values = "VALUES("+uid+",'"+dtf.format(now)+"','Logged in')";
+        String values = "VALUES("+uid+",'"+dtf.format(now)+"','"+log+"')";
 
         st.executeUpdate(insert + values); 
     }
@@ -89,7 +89,6 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
                
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
                return getLogs(uid,date);
            }
        }
@@ -108,6 +107,8 @@ public class UserManager {
                String datetime = rs.getString(3);
                String action = rs.getString(4);
                
+               System.out.println(datetime);
+               System.out.println(date);
                if(datetime.contains(date)){
                    logs.add(new Log(datetime,action));
                }
@@ -154,8 +155,9 @@ public class UserManager {
     }
     
     //Add a user-data into the database   
-    public void delUser(String email) throws SQLException{
-        String fetch = "select * from USERS where EMAIL = '" + email + "'";
+    public String findUser(String email) throws SQLException{
+       String fetch = "select * from USERS where EMAIL = '" + email + "'";
+       System.out.println(email);
        ResultSet rs = st.executeQuery(fetch);
 
        while(rs.next()){
@@ -170,12 +172,23 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
                
-               String sql = "delete from USERS where USERID = " + uid;
-               st.executeUpdate(sql);
-               return;
+               System.out.println(uid);
+               
+               
+               return uid;
            }
-       }     
+       }
+       return null;
     }
+    
+    
+    public void delUser(String email) throws SQLException{
+        String uid = findUser(email);
+        String sql = "DELETE FROM USERS where USERID = " + uid;
+        st.executeUpdate(sql);
+    }
+    
+    
     
     public User updateUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException, Exception{                   //code for add-operation       
         

@@ -60,9 +60,9 @@ public class LogController extends HttpServlet {
         }
 
     }
-
+    
     @Override //Add the DBConnector, DBManager, Connection instances to the session
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
             throws ServletException, IOException {
         
@@ -70,8 +70,8 @@ public class LogController extends HttpServlet {
 
         session = request.getSession();
         
-        String date = request.getParameter("date");
-        session.setAttribute("date", date);
+        session.setAttribute("date", "");
+        User u = (User)session.getAttribute("user");
         
         conn = db.openConnection();       
         
@@ -87,6 +87,49 @@ public class LogController extends HttpServlet {
 
         //export the DB manager to the view-session (JSPs)
         session.setAttribute("Umanager", manager);
+        
+        try{
+            session.setAttribute("logs",getLogs(u.getEmail(),""));
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+        request.getRequestDispatcher("Logs.jsp").include(request, response);
+    }
+
+    @Override //Add the DBConnector, DBManager, Connection instances to the session
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+            throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");       
+
+        session = request.getSession();
+        
+        String date = request.getParameter("date");
+        session.setAttribute("date", date);
+        User u = (User)session.getAttribute("user");
+        
+        conn = db.openConnection();       
+        
+        try {
+
+            manager = new UserManager(conn);
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        //export the DB manager to the view-session (JSPs)
+        session.setAttribute("Umanager", manager);
+        
+        try{
+            session.setAttribute("logs",getLogs(u.getEmail(),date));
+        } catch (Exception e){
+            System.out.println(e);
+        }
         
         request.getRequestDispatcher("Logs.jsp").include(request, response);
     }
