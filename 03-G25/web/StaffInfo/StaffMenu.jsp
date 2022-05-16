@@ -14,6 +14,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+         <a href="DeviceCatalogue.jsp" class="btn btn-light text-dark ms-2"> Staff Device Catalogue </a>
     </body>
 </html>
 
