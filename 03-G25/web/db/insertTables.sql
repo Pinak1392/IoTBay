@@ -86,7 +86,7 @@ VALUES
 INSERT INTO PRODUCT(PRODUCTID, PRODUCTNAME, STOCK, PRICE, DESCRIPTION)
 VALUES
 (1, 'Hr202L Humidity Sensor', 10, 46.00, 'sensor'),
-(2, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor',
+(2, 'SHT30 Temperature and Humidity Sensor', 33, 17.65, 'sensor'),
 (3, 'VCNL4010 Proximity/Light sensor', 7, 14.74, 'sensor'),
 (4, 'DFRobot SEN0312 Proximity Sensor', 10, 23.99, 'sensor'),
 (5, 'TankMate R3 Tank Level Sensor', 12, 350.00, 'sensor'),
