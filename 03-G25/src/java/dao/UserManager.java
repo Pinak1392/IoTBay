@@ -74,41 +74,18 @@ public class UserManager {
 
     
     public ArrayList<Log> viewLogs(String email, String date) throws SQLException, Exception {       
-       String fetch = "select * from USERS where EMAIL = '" + email + "'";
-       ResultSet rs = st.executeQuery(fetch);
-
-       while(rs.next()){
-           String customerEmail = rs.getString(5);
-           if(customerEmail.equals(email)){
-               String uid = rs.getString(1);
-               String customerFirstName = rs.getString(2);
-               String customerLastName = rs.getString(3);
-               String customerPassword = rs.getString(4);
-               String customerPhoneNo = rs.getString(6);
-               String customerDOB = rs.getString(7);
-               String customerIsCustomer = rs.getString(8);
-               String customerActive = rs.getString(9);
-               
-               return getLogs(uid,date);
-           }
-       }
-
-       throw new Exception("Error: User not found");
-    }
-    
-    public ArrayList<Log> getLogs(String uid, String date) throws SQLException, Exception {       
+       String uid = findUser(email);
        String fetch = "select * from ULOGS where ULOGSID = " + uid;
        ResultSet rs = st.executeQuery(fetch);
-       ArrayList<Log> logs = new ArrayList<Log>();
-
+       ArrayList<Log> logs = new ArrayList<>();
+       date = date.replace("-","/");
+       
        while(rs.next()){
            String userid = rs.getString(2);
            if(userid.equals(uid)){
                String datetime = rs.getString(3);
                String action = rs.getString(4);
                
-               System.out.println(datetime);
-               System.out.println(date);
                if(datetime.contains(date)){
                    logs.add(new Log(datetime,action));
                }
