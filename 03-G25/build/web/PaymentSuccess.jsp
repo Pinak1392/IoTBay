@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>PaymentSuccess</title>
     </head>
     <body>
         <header>
@@ -23,7 +23,7 @@
                 </nav>
             </div>
         </header>
-                <h1>Payment Successful! Click here to return to the catalogue page</h1>
+                <h1>Payment Successful! Click here to return to the catalogue page</h1><br><br><br>
         <form method="POST" action="DeviceCatalogueSearch.jsp">
             <input type="submit" value="Continue" autocomplete="on">
         </form>

@@ -24,7 +24,7 @@
             </div>
         </header>
         <h1>Payment</h1><br><br><br><br><br><br>
-        <form method="POST" action="Payment.jsp">
+        <form method="POST" action="PaymentSuccess.jsp">
         <select id="paymentmethod">
             <option value="Credit Card" >Credit Card</option>
             <option value="PayPal" disabled>PayPal (temporarily unavailable)</option> </select><br><br>
@@ -33,7 +33,7 @@
         <label for="cardNo">Card Number:</label>
         <input type="tel" id="cardNo" name="cardNo" class="input" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cardNo" minlength="16" maxlength="19" placeholder="1234 5678 9012 3456" required> <br><br>
         <label for="cvv">CVV:</label>
-        <input type="tel" id="cvv" name="cvv" class="input" inputmode="numeric" pattern="[0-3\s]" autocomplete="cvv" minlength="3" placeholder="123" required> <br><br>
+        <input type="number" id="cvv" name="cvv" class="input" inputmode="numeric" pattern="[0-3\s]" autocomplete="cvv" minlength="3" placeholder="123" required> <br><br>
         <label for="expirydate">Expiry Date</label>
         <input type="month" id="expirydate" class="input" name="expirydate" required> <br><br>
         <input type="submit" value="Purchase">

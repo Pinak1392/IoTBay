@@ -51,7 +51,7 @@
 
                         <%} else { %>
                             
-                          <a href="Logs.jsp" class="btn btn-light text-dark ms-2"> Logs </a>
+                          <a href="LogController" class="btn btn-light text-dark ms-2"> Logs </a>
                           <a href="UpdateUser.jsp" class="btn btn-light text-dark ms-2"> Update Info </a>
                           <a href="LogoutServlet" class="btn btn-light text-dark ms-2"> Logout </a>
 

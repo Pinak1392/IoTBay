@@ -165,6 +165,11 @@ public class RegisterServlett extends HttpServlet {
             addErr.add("Password requires an uppercase letter, special character, a number and must be atleast 8 characters long");
         }
         
+        if(!v.validateDate(dob)){
+            invalid = true;
+            addErr.add("Please completely fill in your date of birth");
+        }
+        
         if(!invalid){
             try{
                 return manager.addUser(fName, lName, password, email, phoneNo, dob, isCustomer);

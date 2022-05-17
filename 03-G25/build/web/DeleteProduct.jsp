@@ -45,7 +45,7 @@
         </form>
         <%! String driverName = "org.apache.derby.jdbc.ClientDriver";%>
         <%!String url = "jdbc:derby://localhost:1527/";%>
-        <%!String user = "admin1";%>
+        <%!String user = "isduser";%>
         <%!String psw = "admin";%>
         <%
             String PRODUCTID = request.getParameter("PRODUCTID");
@@ -55,7 +55,7 @@
                 int PRODUCTID1 = Integer.valueOf(PRODUCTID);
                 try {
                     Class.forName(driverName);
-                    con = DriverManager.getConnection(url + "database", user, psw);
+                    con = DriverManager.getConnection(url + "usersdb", user, psw);
                     String sql = "DELETE FROM PRODUCT WHERE PRODUCTID=" + PRODUCTID1;
                     ps = con.prepareStatement(sql);
                     int i = ps.executeUpdate();

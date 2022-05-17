@@ -100,7 +100,8 @@ public class UpdateServlet extends HttpServlet {
         
         if(del != null){
             try{
-                manager.delUser(email);
+                User u = (User)session.getAttribute("user");
+                manager.delUser(u.getEmail());
             } catch(Exception e) {
                 System.out.println(e);
             }

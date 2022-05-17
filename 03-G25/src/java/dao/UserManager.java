@@ -50,9 +50,9 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
 
-               if(Boolean.parseBoolean(customerActive)){
-                   throw new Exception("Error: User is already logged on elsewhere");
-               }
+//               if(Boolean.parseBoolean(customerActive)){
+//                   throw new Exception("Error: User is already logged on elsewhere");
+//               }
 
                st.executeUpdate("UPDATE USERS SET ACTIVE='true' WHERE EMAIL='"+email+"'");
                createLog(uid,"Login");
@@ -67,41 +67,19 @@ public class UserManager {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
         String insert = "INSERT INTO ULOGS(ULOGSID,TIME_OF_ACTION,ACTIONDESC)";
-        String values = "VALUES("+uid+",'"+dtf.format(now)+"','Logged in')";
+        String values = "VALUES("+uid+",'"+dtf.format(now)+"','"+log+"')";
 
         st.executeUpdate(insert + values); 
     }
 
     
     public ArrayList<Log> viewLogs(String email, String date) throws SQLException, Exception {       
-       String fetch = "select * from USERS where EMAIL = '" + email + "'";
-       ResultSet rs = st.executeQuery(fetch);
-
-       while(rs.next()){
-           String customerEmail = rs.getString(5);
-           if(customerEmail.equals(email)){
-               String uid = rs.getString(1);
-               String customerFirstName = rs.getString(2);
-               String customerLastName = rs.getString(3);
-               String customerPassword = rs.getString(4);
-               String customerPhoneNo = rs.getString(6);
-               String customerDOB = rs.getString(7);
-               String customerIsCustomer = rs.getString(8);
-               String customerActive = rs.getString(9);
-               
-               st.executeUpdate("UPDATE USERS SET ACTIVE='false' WHERE EMAIL='"+email+"'");
-               return getLogs(uid,date);
-           }
-       }
-
-       throw new Exception("Error: User not found");
-    }
-    
-    public ArrayList<Log> getLogs(String uid, String date) throws SQLException, Exception {       
+       String uid = findUser(email);
        String fetch = "select * from ULOGS where ULOGSID = " + uid;
        ResultSet rs = st.executeQuery(fetch);
-       ArrayList<Log> logs = new ArrayList<Log>();
-
+       ArrayList<Log> logs = new ArrayList<>();
+       date = date.replace("-","/");
+       
        while(rs.next()){
            String userid = rs.getString(2);
            if(userid.equals(uid)){
@@ -154,8 +132,8 @@ public class UserManager {
     }
     
     //Add a user-data into the database   
-    public void delUser(String email) throws SQLException{
-        String fetch = "select * from USERS where EMAIL = '" + email + "'";
+    public String findUser(String email) throws SQLException{
+       String fetch = "select * from USERS where EMAIL = '" + email + "'";
        ResultSet rs = st.executeQuery(fetch);
 
        while(rs.next()){
@@ -170,12 +148,21 @@ public class UserManager {
                String customerIsCustomer = rs.getString(8);
                String customerActive = rs.getString(9);
                
-               String sql = "delete from USERS where USERID = " + uid;
-               st.executeUpdate(sql);
-               return;
+               
+               return uid;
            }
-       }     
+       }
+       return null;
     }
+    
+    
+    public void delUser(String email) throws SQLException{
+        String uid = findUser(email);
+        String sql = "DELETE FROM USERS where USERID = " + uid;
+        st.executeUpdate(sql);
+    }
+    
+    
     
     public User updateUser(String fName, String lName, String password, String email, String phoneNo, String dob, boolean isCustomer) throws SQLException, Exception{                   //code for add-operation       
         
@@ -206,5 +193,4 @@ public class UserManager {
     }
 
 }
-
 
